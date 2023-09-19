@@ -1,0 +1,52 @@
+.container {
+    max-width: 1300px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+}
+
+.col {
+    background-color: white;
+    border: 1px solid #f4a108;
+    padding-top: 10px;
+    padding-left:20px;
+    max-width: 32%;
+    border-radius: 5px;
+    box-shadow: #08b5f4;
+}
+
+#ghi-btn{
+    margin-bottom: 10px;
+}
+
+#card-icon {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+#card-icon button {
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+}
+
+#card-icon button:hover {
+    background-color: rgb(250, 193, 193);
+    color: white;
+}
+
+img{
+    width: 70px;
+}
