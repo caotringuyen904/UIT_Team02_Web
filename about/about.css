@@ -1,0 +1,64 @@
+html{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+/*Intro styling */
+
+.intro p {
+    font-size: 5rem;
+    text-align: left;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.intro{
+    display: flex;
+    flex-grow: 1;
+}
+/* media queries for intro*/
+@media screen and (max-width: 516px){
+    .intro{
+       display: flex;
+       flex-wrap: wrap;
+       
+    }
+   
+   .intro_img{
+        width: 250px;
+        height: fit-content;
+   }
+   .intro p{
+        font-size: 3rem;
+        
+   }
+}
+.nowrap{
+    text-wrap: nowrap;
+}
+.intro{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.about_us_btn{
+    justify-content: center;
+    padding: 1rem;
+    display:flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.about_us_btn button{
+    background-color: rgb(250, 20, 20);
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    margin: 1rem;
+    color: whitesmoke;
+    border-color: red;
+    border-width: 0.3rem;
+}
+.about_us_btn button:hover{
+    background-color: rgb(250, 20, 20, 0.7);
+}
