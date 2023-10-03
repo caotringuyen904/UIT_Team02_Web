@@ -144,102 +144,91 @@ html{
     }
 }
 
-/*Styling for promotion box*/
-.promotion_box{
-    display:flex;
-    flex-direction: row;
-    align-items:center;
-    margin:40px;
-    border: solid 2px red;
-    border-radius: 2rem;
-    background-color: rgb(255, 0, 0, 0.3);
-}
-.promotion_box p {
-    font-size: 1.5rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.old_price{
-    text-decoration: line-through;
-}
-.img_price_container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-.img_price_container img {
-    width: 300px;
-    height:fit-content;
-    border-radius: 50%;
-    margin-right: 60px;
-}
+/*
+Design for Promotion news
+*/
 
-.quantity_btn_container{
-    margin-left: 30%;
+#promotionholder {
     display:flex;
     flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#promotionholder section{
+    display:grid;
+    grid-template-columns: repeat(8, 1fr);
     align-items: center;
+    border: 2px solid rgb(255, 0, 0, 0.5);
+    border-radius: 2rem;
 }
-.quantity_btn_container input {
-    width: 100px; 
+
+#promotionholder section img{
+    width: 200px;
+    height: fit-content;
+    margin-right: 20px;
+    padding: 25px;
 }
- 
-.increase_decrease_btn_container{
-    margin-top: 20px;
-    display:flex;
-    flex-direction: row;
+#promotionholder section p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-left: 10px;
 }
-.increase_btn{
-    margin-left: 20px;
-    background-color: green;
-}
-.decrease_btn{
-    background-color: red;
-}
-.increase_btn, .decrease_btn {
+
+
+#promotionholder section #dcs_btn {
+    font-size: 1.3rem;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+    background-color: red;
+    border: 1px solid black;
+}
+#promotionholder section #dcs_btn:hover {
+    background-color: rgb(250,0,0,0.5);
 }
 
-/*Responsive media query for promotion*/
+#promotionholder section #ics_btn {
+    width: 30px;
+    font-size: 1.3rem;
+    height: 30px;
+    border-radius: 50%;
+    background-color: green;
+    border: 1px solid black;
+}
+#promotionholder section #ics_btn:hover{
+    background-color: rgb(0, 128, 0,0.5);
+}
 
-@media screen and (max-width:516px) {
-    .promotion_box{
-       flex-direction: column;
-       align-items: center;
-       justify-content: center;
+#promotionholder section #addtocart_btn {
+    width: 100px;
+    height: 50px;
+    border-radius: 2rem;
+    background-color: rgb(255, 0, 0, 0.5);
+    margin-right: 10px;
+}
+#promotionholder section #addtocart_btn:hover{
+    background-color: rgb(255, 0, 0, 0.8);
+}
+
+/*
+Media query for promotion new
+*/
+@media screen and (max-width: 516px) {
+    #promotionholder section img{
+        width: 150px;
+        height: fit-content;
     }
-    .img_price_container img {
-        width: 250px;
-        height:fit-content;
-        margin-right: 0;
-    }
-    .promotion_box p {
-        font-size: 1rem;
-        text-align: center;
-    }
-    .img_price_container{
+    #promotionholder section{
+        display:flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        gap: 10px;
     }
-    .quantity_btn_container {
-        align-items: center;
-        justify-content: center;
-        margin: 0;
+    #promotionholder section p{
+        font-size: 1.5rem;
     }
-    .increase_decrease_btn_container{
-        margin-top: 10px;
+    #promotionholder section #addtocart_btn{
         margin-bottom: 10px;
-        align-items: center;
     }
 }
-
-@media screen and (max-width:920px){
-    .promotion_box{
-       width: 100vw;
-       margin-left:0;
-     }
-     .quantity_btn_container {
-        margin-left:3%;
-    }
-}
-
