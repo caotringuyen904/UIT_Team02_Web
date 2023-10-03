@@ -8,7 +8,7 @@ let bookAParty_btn = document.getElementById("bookaparty_btn")
 //Initialize placeholder
 let storyHolder = document.getElementById("storyholder")
 let promotionHolder = document.getElementById("promotionholder")
-
+let footerholder = document.getElementById("footer")
 
 //Initialize story object
 let story = [
@@ -68,15 +68,25 @@ let promotions =[
 ]
 console.log(promotions)
 
+//Initialize the Restaurant places
+let restaurants = [
+    {
+        resID:"001",
+        name:"Ho Chi Minh branch",
+        address:"Đ. Đồng Khởi, P, Quận 1, Thành phố Hồ Chí Minh 700000",
+        link:"https://www.google.com/search?q=restaurant+viet+nam+address&sca_esv=570269325&rlz=1C1ONGR_enVN979VN979&sxsrf=AM9HkKmVtlPva1EE5P-mCSa3v_GEl_qdUA%3A1696317370377&ei=ur8bZavSFqGC2roP96uj2A8&oq=restaurant+viet+nam+add&gs_lp=Egxnd3Mtd2l6LXNlcnAiF3Jlc3RhdXJhbnQgdmlldCBuYW0gYWRkKgIIADIFECEYoAEyBRAhGKABMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIKECEYFhgeGA8YHUi9DVBEWKcIcAF4AZABAJgBlgGgAbsEqgEDMC40uAEByAEA-AEBwgIKEAAYRxjWBBiwA8ICBxAAGIAEGArCAgYQABgWGB7CAgIQJsICBBAhGBXiAwQYACBBiAYBkAYI&sclient=gws-wiz-serp#rlimm=6303144761789413895",
+        phone:"0900090211",
+    },
+    {
+        resID:"002",
+        name:"Ha Noi branch",
+        address:"75 P. Nguyễn Đình Chiểu, Lê Đại Hành, Hai Bà Trưng, Hà Nội",
+        link:"https://www.google.com/search?q=restaurant+viet+nam+address+hanoi&rlz=1C1ONGR_enVN979VN979&oq=restaurant+viet+nam+address+hanoi&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKAB0gEIMzQxMmowajSoAgCwAgA&sourceid=chrome&ie=UTF-8#rlimm=4668035241847581460",
+        phone:"0900090212",
+    }
+]
 
-
-
-
-
-
-
-
-
+console.log(restaurants)
 //Render story function
 ourStory_btn.addEventListener("click", function(){
     promotionHolder.innerHTML = ""
@@ -151,3 +161,31 @@ promotionNew_btn.addEventListener("click", function(){
         promotionHolder.appendChild(promotionBox)
     }
 })
+
+//Render the footer of html page
+    let footerTitle = document.createElement("p")
+    footerTitle.textContent = "Old Man Restaurant"
+    footerTitle.setAttribute("id","footer_title")
+    footerholder.appendChild(footerTitle)
+    for(let i in restaurants){
+        let contact = document.createElement("article")
+        let resName = document.createElement("p")
+        resName.textContent = restaurants[i].name
+        contact.appendChild(resName)
+        let resAddPhone = document.createElement("address")
+        let resAddress = document.createElement("a")
+        resAddress.textContent = "Address: " + restaurants[i].address
+        resAddress.setAttribute("href",restaurants[i].link)
+        resAddPhone.appendChild(resAddress)
+        let resPhone = document.createElement("a")
+        resPhone.textContent = "Phone number: " + restaurants[i].phone
+        resPhone.setAttribute("href","tel:" + restaurants[i].phone)
+        resAddPhone.appendChild(resPhone)
+        contact.appendChild(resAddPhone)
+        footerholder.appendChild(contact)
+    }
+    let pageUp_btn = document.createElement("a")
+    pageUp_btn.textContent = "^"
+    pageUp_btn.setAttribute("href", "#")
+    pageUp_btn.setAttribute("id", "pageup_btn")
+    footerholder.appendChild(pageUp_btn)
