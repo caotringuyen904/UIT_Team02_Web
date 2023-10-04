@@ -8,7 +8,8 @@ let bookAParty_btn = document.getElementById("bookaparty_btn")
 //Initialize placeholder
 let storyHolder = document.getElementById("storyholder")
 let promotionHolder = document.getElementById("promotionholder")
-let footerholder = document.getElementById("footer")
+let footerHolder = document.getElementById("footer")
+let careerHolder = document.getElementById("careerholder")
 
 //Initialize story object
 let story = [
@@ -73,14 +74,14 @@ let restaurants = [
     {
         resID:"001",
         name:"Ho Chi Minh branch",
-        address:"Đ. Đồng Khởi, P, Quận 1, Thành phố Hồ Chí Minh 700000",
+        address:"Đ.Đồng Khởi, P, Quận 1, TP Hồ Chí Minh",
         link:"https://www.google.com/search?q=restaurant+viet+nam+address&sca_esv=570269325&rlz=1C1ONGR_enVN979VN979&sxsrf=AM9HkKmVtlPva1EE5P-mCSa3v_GEl_qdUA%3A1696317370377&ei=ur8bZavSFqGC2roP96uj2A8&oq=restaurant+viet+nam+add&gs_lp=Egxnd3Mtd2l6LXNlcnAiF3Jlc3RhdXJhbnQgdmlldCBuYW0gYWRkKgIIADIFECEYoAEyBRAhGKABMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIKECEYFhgeGA8YHUi9DVBEWKcIcAF4AZABAJgBlgGgAbsEqgEDMC40uAEByAEA-AEBwgIKEAAYRxjWBBiwA8ICBxAAGIAEGArCAgYQABgWGB7CAgIQJsICBBAhGBXiAwQYACBBiAYBkAYI&sclient=gws-wiz-serp#rlimm=6303144761789413895",
         phone:"0900090211",
     },
     {
         resID:"002",
         name:"Ha Noi branch",
-        address:"75 P. Nguyễn Đình Chiểu, Lê Đại Hành, Hai Bà Trưng, Hà Nội",
+        address:"75 P.Nguyễn Đình Chiểu, Lê Đại Hành, Hai Bà Trưng, Hà Nội",
         link:"https://www.google.com/search?q=restaurant+viet+nam+address+hanoi&rlz=1C1ONGR_enVN979VN979&oq=restaurant+viet+nam+address+hanoi&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKAB0gEIMzQxMmowajSoAgCwAgA&sourceid=chrome&ie=UTF-8#rlimm=4668035241847581460",
         phone:"0900090212",
     }
@@ -90,6 +91,7 @@ console.log(restaurants)
 //Render story function
 ourStory_btn.addEventListener("click", function(){
     promotionHolder.innerHTML = ""
+    careerHolder.innerHTML = ""
     for(let i in story){
         let storyBox = document.createElement("article")
         let storyImage = document.createElement("img")
@@ -104,6 +106,7 @@ ourStory_btn.addEventListener("click", function(){
 
 promotionNew_btn.addEventListener("click", function(){
     storyHolder.innerHTML = ""
+    careerHolder.innerHTML = ""
     for(let i in promotions){
         //generate a container for promotion
         let promotionBox = document.createElement("section")
@@ -147,6 +150,7 @@ promotionNew_btn.addEventListener("click", function(){
         addToCart.addEventListener("click", function(){
             let temp = promotions[i]
             localStorage.setItem(JSON.stringify(promotions[i].id),JSON.stringify(promotions[i]))
+            alert("Sucessfully add to cart this item")
         })
         //add all the component of promotion box into the box
         promotionBox.appendChild(promotionName)
@@ -161,12 +165,104 @@ promotionNew_btn.addEventListener("click", function(){
         promotionHolder.appendChild(promotionBox)
     }
 })
+//Position that still need employee
+let lackPosition = ["Waiter/Waitress", "Manager", "Marketing"]
+console.log(lackPosition)
+//Render the career
+career_btn.addEventListener("click", function(){
+    storyHolder.innerHTML = ""
+    promotionHolder.innerHTML = ""
+    let form = document.createElement("form")
+    form.setAttribute("id", "rescruitform")
+    let dataList = document.createElement("select")
+    dataList.setAttribute("id", "choosen")
+    for (let i in lackPosition){
+        let positions = document.createElement("option")
+        positions.setAttribute("value", lackPosition[i])
+        positions.textContent = lackPosition[i]
+        dataList.appendChild(positions)
+    }
+    let dataList_lbl = document.createElement("label")
+    dataList_lbl.setAttribute("for", "choosen")
+    dataList_lbl.textContent = "Hiring Position: "
+    form.appendChild(dataList_lbl)
+    form.appendChild(dataList)
+
+    
+    
+
+    let candidateFName = document.createElement("input")
+    candidateFName.setAttribute("type", "text")
+    candidateFName.setAttribute("id", "candidatefname")
+    let candidateFName_lb = document.createElement("label")
+    candidateFName_lb.setAttribute("for","candidatefname")
+    candidateFName_lb.textContent = "First Name: "
+    form.appendChild(candidateFName_lb)
+    form.appendChild(candidateFName)
+
+
+    let candidateLName = document.createElement("input")
+    candidateLName.setAttribute("type", "text")
+    candidateLName.setAttribute("id", "candidatelname")
+    let candidateLName_lb = document.createElement("label")
+    candidateLName_lb.setAttribute("for","candidatelname")
+    candidateLName_lb.textContent = "Last Name: "
+    form.appendChild(candidateLName_lb)
+    form.appendChild(candidateLName)
+
+
+    let candidateEmail = document.createElement("input")
+    candidateEmail.setAttribute("type", "email")
+    candidateEmail.setAttribute("id", "candidateemail")
+    let candidateEmail_lb = document.createElement("label")
+    candidateEmail_lb.setAttribute("for", "candidateemail")
+    candidateEmail_lb.textContent = "Contact Email: "
+    form.appendChild(candidateEmail_lb)
+    form.appendChild(candidateEmail)
+
+    let buttonArea = document.createElement("div")
+    buttonArea.setAttribute("id", "buttonarea")
+    let submitBtn = document.createElement("input")
+    submitBtn.setAttribute("type","submit")
+    submitBtn.setAttribute("id","submit_btn")
+    submitBtn.value = "Submit"
+    submitBtn.addEventListener("click",function(){
+        let candidate = {
+            submitID: dataList.value + candidateEmail.value,
+            position: dataList.value,
+            firstName: candidateFName.value,
+            lastName: candidateLName.value,
+            contactEMail: candidateEmail.value,
+        }
+        console.log(candidate)
+        localStorage.setItem(JSON.stringify(candidate.submitID),JSON.stringify(candidate))
+    })
+    let resetBtn = document.createElement("input")
+    resetBtn.setAttribute("type","reset")
+    resetBtn.setAttribute("id", "reset_btn")
+    resetBtn.value = "Reset"
+    resetBtn.addEventListener("click", function(){
+        candidateFName.value=""
+        candidateLName.value=""
+        candidateEmail.value=""
+    })
+    buttonArea.appendChild(submitBtn)
+    buttonArea.appendChild(resetBtn)
+    form.appendChild(buttonArea)
+
+
+    careerHolder.appendChild(form)
+})
+
+
+
+
 
 //Render the footer of html page
     let footerTitle = document.createElement("p")
     footerTitle.textContent = "Old Man Restaurant"
     footerTitle.setAttribute("id","footer_title")
-    footerholder.appendChild(footerTitle)
+    footerHolder.appendChild(footerTitle)
     for(let i in restaurants){
         let contact = document.createElement("article")
         let resName = document.createElement("p")
@@ -174,7 +270,7 @@ promotionNew_btn.addEventListener("click", function(){
         contact.appendChild(resName)
         let resAddPhone = document.createElement("address")
         let resAddress = document.createElement("a")
-        resAddress.textContent = "Address: " + restaurants[i].address
+        resAddress.innerHTML = "Address:<br>" + restaurants[i].address
         resAddress.setAttribute("href",restaurants[i].link)
         resAddPhone.appendChild(resAddress)
         let resPhone = document.createElement("a")
@@ -182,10 +278,10 @@ promotionNew_btn.addEventListener("click", function(){
         resPhone.setAttribute("href","tel:" + restaurants[i].phone)
         resAddPhone.appendChild(resPhone)
         contact.appendChild(resAddPhone)
-        footerholder.appendChild(contact)
+        footerHolder.appendChild(contact)
     }
     let pageUp_btn = document.createElement("a")
     pageUp_btn.textContent = "^"
     pageUp_btn.setAttribute("href", "#")
     pageUp_btn.setAttribute("id", "pageup_btn")
-    footerholder.appendChild(pageUp_btn)
+    footerHolder.appendChild(pageUp_btn)
