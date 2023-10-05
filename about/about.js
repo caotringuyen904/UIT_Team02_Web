@@ -272,8 +272,8 @@ bookAParty_btn.addEventListener("click", function(){
     partyHolder.appendChild(bookingTitle)
     partyHolder.appendChild(bookingImg)
     let personalInfo = document.createElement("div")
-    personalInfo.setAttribute("id", "personal_info")
-
+    
+    
 })
 
 
