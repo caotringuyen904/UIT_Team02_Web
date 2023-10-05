@@ -1,3 +1,11 @@
+
+// fetch('/UIT_Team02_Web/food/data.JSON').then((res) => res.json()).then((data) => {console.log(data);});
+
+// console.log(test1);
+
+import data from './data.JSON' assert { type: "json" };
+
+console.log(data);
 let products = [
     {
         id: 1,
