@@ -10,6 +10,7 @@ let storyHolder = document.getElementById("storyholder")
 let promotionHolder = document.getElementById("promotionholder")
 let footerHolder = document.getElementById("footer")
 let careerHolder = document.getElementById("careerholder")
+let partyHolder = document.getElementById("partyholder")
 
 //Initialize story object
 let story = [
@@ -165,9 +166,13 @@ promotionNew_btn.addEventListener("click", function(){
         promotionHolder.appendChild(promotionBox)
     }
 })
+
+
+
 //Position that still need employee
 let lackPosition = ["Waiter/Waitress", "Manager", "Marketing"]
 console.log(lackPosition)
+
 //Render the career
 career_btn.addEventListener("click", function(){
     storyHolder.innerHTML = ""
@@ -194,6 +199,7 @@ career_btn.addEventListener("click", function(){
     let candidateFName = document.createElement("input")
     candidateFName.setAttribute("type", "text")
     candidateFName.setAttribute("id", "candidatefname")
+    candidateFName.setAttribute("required", "true")
     let candidateFName_lb = document.createElement("label")
     candidateFName_lb.setAttribute("for","candidatefname")
     candidateFName_lb.textContent = "First Name: "
@@ -204,6 +210,7 @@ career_btn.addEventListener("click", function(){
     let candidateLName = document.createElement("input")
     candidateLName.setAttribute("type", "text")
     candidateLName.setAttribute("id", "candidatelname")
+    candidateLName.setAttribute("required", "true")
     let candidateLName_lb = document.createElement("label")
     candidateLName_lb.setAttribute("for","candidatelname")
     candidateLName_lb.textContent = "Last Name: "
@@ -214,9 +221,10 @@ career_btn.addEventListener("click", function(){
     let candidateEmail = document.createElement("input")
     candidateEmail.setAttribute("type", "email")
     candidateEmail.setAttribute("id", "candidateemail")
+    candidateEmail.setAttribute("required", "true")
     let candidateEmail_lb = document.createElement("label")
     candidateEmail_lb.setAttribute("for", "candidateemail")
-    candidateEmail_lb.textContent = "Contact Email: "
+    candidateEmail_lb.textContent = "Contact Email:* "
     form.appendChild(candidateEmail_lb)
     form.appendChild(candidateEmail)
 
@@ -252,6 +260,20 @@ career_btn.addEventListener("click", function(){
 
 
     careerHolder.appendChild(form)
+})
+
+//Render the Party 
+bookAParty_btn.addEventListener("click", function(){
+    let bookingTitle = document.createElement("p")
+    bookingTitle.textContent = "BOOKING FORM"
+    let bookingImg = document.createElement("img")
+    bookingImg.setAttribute("src", "./Info_img/party_1300x325.png")
+    bookingImg.setAttribute("id","booking_img")
+    partyHolder.appendChild(bookingTitle)
+    partyHolder.appendChild(bookingImg)
+    let personalInfo = document.createElement("div")
+    personalInfo.setAttribute("id", "personal_info")
+
 })
 
 
