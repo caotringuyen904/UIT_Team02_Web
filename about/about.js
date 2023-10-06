@@ -1,18 +1,19 @@
 
 //Initialize Button object
-let ourStory_btn = document.getElementById("ourstory_btn")
-let promotionNew_btn = document.getElementById("promotionnew_btn")
-let career_btn = document.getElementById("career_btn")
-let bookAParty_btn = document.getElementById("bookaparty_btn")
+const ourStory_btn = document.getElementById("ourstory_btn")
+const promotionNew_btn = document.getElementById("promotionnew_btn")
+const career_btn = document.getElementById("career_btn")
+const bookAParty_btn = document.getElementById("bookaparty_btn")
 
 //Initialize placeholder
-let storyHolder = document.getElementById("storyholder")
-let promotionHolder = document.getElementById("promotionholder")
-let footerHolder = document.getElementById("footer")
-let careerHolder = document.getElementById("careerholder")
+const storyHolder = document.getElementById("storyholder")
+const promotionHolder = document.getElementById("promotionholder")
+const footerHolder = document.getElementById("footer")
+const careerHolder = document.getElementById("careerholder")
+const partyHolder = document.getElementById("partyholder")
 
 //Initialize story object
-let story = [
+const story = [
 {
     story_img:"/about/Info_img/story_chicken_1_500x500.png",
     story_content:"Once upon a time, there was an old man call The Oldman who had a dream of opening his own fried chicken restaurant. He had always loved fried chicken, and he believed that he could make the best fried chicken in the world. The Oldman worked hard to save up enough money to open his restaurant. He also spent years perfecting his fried chicken recipe. She experimented with different flours, seasonings, and cooking methods until he finally found the perfect combination.When The Oldman finally opened his restaurant, he called it The Oldman he was excited to share his delicious fried chicken with the world"
@@ -70,11 +71,13 @@ let promotions =[
 console.log(promotions)
 
 //Initialize the Restaurant places
-let restaurants = [
+const restaurants = [
     {
         resID:"001",
         name:"Ho Chi Minh branch",
         address:"Đ.Đồng Khởi, P, Quận 1, TP Hồ Chí Minh",
+        district: "Quan 1",
+        city: "HCM",
         link:"https://www.google.com/search?q=restaurant+viet+nam+address&sca_esv=570269325&rlz=1C1ONGR_enVN979VN979&sxsrf=AM9HkKmVtlPva1EE5P-mCSa3v_GEl_qdUA%3A1696317370377&ei=ur8bZavSFqGC2roP96uj2A8&oq=restaurant+viet+nam+add&gs_lp=Egxnd3Mtd2l6LXNlcnAiF3Jlc3RhdXJhbnQgdmlldCBuYW0gYWRkKgIIADIFECEYoAEyBRAhGKABMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIKECEYFhgeGA8YHUi9DVBEWKcIcAF4AZABAJgBlgGgAbsEqgEDMC40uAEByAEA-AEBwgIKEAAYRxjWBBiwA8ICBxAAGIAEGArCAgYQABgWGB7CAgIQJsICBBAhGBXiAwQYACBBiAYBkAYI&sclient=gws-wiz-serp#rlimm=6303144761789413895",
         phone:"0900090211",
     },
@@ -82,6 +85,8 @@ let restaurants = [
         resID:"002",
         name:"Ha Noi branch",
         address:"75 P.Nguyễn Đình Chiểu, Lê Đại Hành, Hai Bà Trưng, Hà Nội",
+        district: "Quan Hai Ba Trung",
+        city: "Hanoi",
         link:"https://www.google.com/search?q=restaurant+viet+nam+address+hanoi&rlz=1C1ONGR_enVN979VN979&oq=restaurant+viet+nam+address+hanoi&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKAB0gEIMzQxMmowajSoAgCwAgA&sourceid=chrome&ie=UTF-8#rlimm=4668035241847581460",
         phone:"0900090212",
     }
@@ -92,6 +97,8 @@ console.log(restaurants)
 ourStory_btn.addEventListener("click", function(){
     promotionHolder.innerHTML = ""
     careerHolder.innerHTML = ""
+    storyHolder.innerHTML = ""
+    partyHolder.innerHTML = ""
     for(let i in story){
         let storyBox = document.createElement("article")
         let storyImage = document.createElement("img")
@@ -105,8 +112,10 @@ ourStory_btn.addEventListener("click", function(){
 })
 
 promotionNew_btn.addEventListener("click", function(){
-    storyHolder.innerHTML = ""
+    promotionHolder.innerHTML = ""
     careerHolder.innerHTML = ""
+    storyHolder.innerHTML = ""
+    partyHolder.innerHTML = ""
     for(let i in promotions){
         //generate a container for promotion
         let promotionBox = document.createElement("section")
@@ -165,13 +174,19 @@ promotionNew_btn.addEventListener("click", function(){
         promotionHolder.appendChild(promotionBox)
     }
 })
+
+
+
 //Position that still need employee
 let lackPosition = ["Waiter/Waitress", "Manager", "Marketing"]
 console.log(lackPosition)
+
 //Render the career
 career_btn.addEventListener("click", function(){
-    storyHolder.innerHTML = ""
     promotionHolder.innerHTML = ""
+    careerHolder.innerHTML = ""
+    storyHolder.innerHTML = ""
+    partyHolder.innerHTML = ""
     let form = document.createElement("form")
     form.setAttribute("id", "rescruitform")
     let dataList = document.createElement("select")
@@ -194,9 +209,10 @@ career_btn.addEventListener("click", function(){
     let candidateFName = document.createElement("input")
     candidateFName.setAttribute("type", "text")
     candidateFName.setAttribute("id", "candidatefname")
+    candidateFName.setAttribute("required", "true")
     let candidateFName_lb = document.createElement("label")
     candidateFName_lb.setAttribute("for","candidatefname")
-    candidateFName_lb.textContent = "First Name: "
+    candidateFName_lb.textContent = "First Name:* "
     form.appendChild(candidateFName_lb)
     form.appendChild(candidateFName)
 
@@ -204,9 +220,10 @@ career_btn.addEventListener("click", function(){
     let candidateLName = document.createElement("input")
     candidateLName.setAttribute("type", "text")
     candidateLName.setAttribute("id", "candidatelname")
+    candidateLName.setAttribute("required", "true")
     let candidateLName_lb = document.createElement("label")
     candidateLName_lb.setAttribute("for","candidatelname")
-    candidateLName_lb.textContent = "Last Name: "
+    candidateLName_lb.textContent = "Last Name:* "
     form.appendChild(candidateLName_lb)
     form.appendChild(candidateLName)
 
@@ -214,9 +231,10 @@ career_btn.addEventListener("click", function(){
     let candidateEmail = document.createElement("input")
     candidateEmail.setAttribute("type", "email")
     candidateEmail.setAttribute("id", "candidateemail")
+    candidateEmail.setAttribute("required", "true")
     let candidateEmail_lb = document.createElement("label")
     candidateEmail_lb.setAttribute("for", "candidateemail")
-    candidateEmail_lb.textContent = "Contact Email: "
+    candidateEmail_lb.textContent = "Contact Email:* "
     form.appendChild(candidateEmail_lb)
     form.appendChild(candidateEmail)
 
@@ -253,6 +271,349 @@ career_btn.addEventListener("click", function(){
 
     careerHolder.appendChild(form)
 })
+
+//Render the Party 
+bookAParty_btn.addEventListener("click", function(){
+    promotionHolder.innerHTML = ""
+    careerHolder.innerHTML = ""
+    storyHolder.innerHTML = ""
+    partyHolder.innerHTML = ""
+
+
+    //Generate a form container for party booking form
+    let bookingForm = document.createElement("form")
+
+    let bookingTitle = document.createElement("p")
+    bookingTitle.textContent = "BOOKING FORM"
+    let bookingImg = document.createElement("img")
+    bookingImg.setAttribute("src", "./Info_img/party_1300x325.png")
+    bookingImg.setAttribute("id","booking_img")
+    bookingForm.appendChild(bookingTitle)
+    bookingForm.appendChild(bookingImg)
+
+    //Generate div for personal Infomation of customer
+    let personalInfo = document.createElement("div")
+    personalInfo.setAttribute("id", "personal_info")
+
+    //Label for personal infomation
+    let personalInfoLabel = document.createElement("p")
+    personalInfoLabel.textContent = "PERSONAL INFORMATION"
+    personalInfo.appendChild(personalInfoLabel)
+
+    // full Name of the kid have party (not required)
+    let fullNameChild = document.createElement("input")
+    fullNameChild.setAttribute("type", "text")
+    fullNameChild.setAttribute("id", "fullname_child")
+    let fullNameChild_lb = document.createElement("label")
+    fullNameChild_lb.setAttribute("for","fullname_child")
+    fullNameChild_lb.textContent = "Full name of child "
+    personalInfo.appendChild(fullNameChild_lb)
+    personalInfo.appendChild(fullNameChild)
+
+    //Full name of the customer (required)
+    let fullNameParent = document.createElement("input")
+    fullNameParent.setAttribute("type", "text")
+    fullNameParent.setAttribute("id", "fullname_parent")
+    fullNameParent.setAttribute("required", "true")
+    let fullNameParent_lb = document.createElement("label")
+    fullNameParent_lb.setAttribute("for","fullname_parent")
+    fullNameParent_lb.textContent = "Full name of parent * "
+    personalInfo.appendChild(fullNameParent_lb)
+    personalInfo.appendChild(fullNameParent)
+    
+    //Phone contact of customer (required)
+    let customerPhone = document.createElement("input")
+    customerPhone.setAttribute("type", "tel")
+    customerPhone.setAttribute("id", "customer_tel")
+    customerPhone.setAttribute("required", "true")
+    let customerPhone_lb = document.createElement("label")
+    customerPhone_lb.setAttribute("for","customer_tel")
+    customerPhone_lb.textContent = "Phone number * "
+    personalInfo.appendChild(customerPhone_lb)
+    personalInfo.appendChild(customerPhone)
+
+    //Email of customer (required)
+    let customerEMail = document.createElement("input")
+    customerEMail.setAttribute("type", "email")
+    customerEMail.setAttribute("id", "customer_email")
+    customerEMail.setAttribute("required", "true")
+    let customerEMail_lb = document.createElement("label")
+    customerEMail_lb.setAttribute("for","customer_email")
+    customerEMail_lb.textContent = "Email * "
+    personalInfo.appendChild(customerEMail_lb)
+    personalInfo.appendChild(customerEMail)
+
+
+    bookingForm.appendChild(personalInfo)
+    console.log(bookingForm)
+
+
+    //Create a div for party infomation
+    let partyInfo = document.createElement("div")
+    partyInfo.setAttribute("id", "party_info")
+    
+    //label for the div
+    let partyInfoLabel = document.createElement("p")
+    partyInfoLabel.textContent = "PARTY INFORMATION"
+    partyInfo.appendChild(partyInfoLabel)
+
+    //Choosen the party type
+    let partyType = document.createElement("div")
+    partyType.setAttribute("id", "party_type")
+    let partyType_lbl = document.createElement("p")
+    partyType_lbl.textContent = "Party Type"
+    partyType.appendChild(partyType_lbl)
+    
+    //Birthday choice
+    let birthdayType = document.createElement("input")
+    birthdayType.setAttribute("type", "radio")
+    birthdayType.setAttribute("id","birthday_type")
+    let birthdayTypelbl = document.createElement("label")
+    birthdayTypelbl.setAttribute("for", "birthday_type")
+    birthdayTypelbl.textContent = "Birthday Party"
+    partyType.appendChild(birthdayType)
+    partyType.appendChild(birthdayTypelbl)
+    
+    //common choice
+    let commonType = document.createElement("input")
+    commonType.setAttribute("type", "radio")
+    commonType.setAttribute("id","common_type")
+    let commonType_lbl = document.createElement("label")
+    commonType_lbl.setAttribute("for", "common_type")
+    commonType_lbl.textContent = "Party"
+    partyType.appendChild(commonType)
+    partyType.appendChild(commonType_lbl)
+
+    partyInfo.appendChild(partyType)
+    
+    
+
+    //The day that operate the party
+    let bookingDate = document.createElement("div")
+    bookingDate.setAttribute("id", "bookingdate")
+    //label for booking date component
+    let bookingDatelbl = document.createElement("p")
+    bookingDatelbl.textContent = "Party date * "
+
+    //Year choosen (current year and next year)
+    let yearBooking = document.createElement("select")
+    yearBooking.setAttribute("id","bookingyear")
+    yearBooking.setAttribute ("required", "true")
+    let year = new Date().getFullYear()
+    let yearBookinglbl = document.createElement("option")
+    yearBookinglbl.setAttribute("value","")
+    yearBookinglbl.setAttribute("disabled", "true")
+    yearBookinglbl.setAttribute("selected", "true")
+    yearBookinglbl.setAttribute("hidden","true")
+    yearBookinglbl.textContent = "Year"
+    yearBooking.appendChild(yearBookinglbl)
+    for(let i=0; i<2; i++){
+        let yearOption = document.createElement("option")
+        yearOption.setAttribute("value", year + i)
+        yearOption.textContent = year + i
+        yearBooking.appendChild(yearOption)
+    }
+    
+
+
+
+    //Month choices only 12 in a year
+    let monthBooking = document.createElement("select")
+    monthBooking.setAttribute("id", "monthbooking")
+    monthBooking.setAttribute ("required", "true")
+    let monthBookinglbl = document.createElement("option")
+    monthBookinglbl.setAttribute("value","")
+    monthBookinglbl.setAttribute("disabled", "true")
+    monthBookinglbl.setAttribute("selected", "true")
+    monthBookinglbl.setAttribute("hidden","true")
+    monthBookinglbl.textContent = "Month"
+    monthBooking.appendChild(monthBookinglbl)
+    for(let i=1; i<13; i++){
+        let monthOption =document.createElement("option")
+        monthOption.setAttribute("value", i)
+        monthOption.textContent = i
+        monthBooking.appendChild(monthOption)
+    }
+ 
+
+
+
+
+
+
+    //Day choices depend on year and month
+    let dayBooking = document.createElement("select")
+    dayBooking.setAttribute("id", "daybooking")
+    dayBooking.setAttribute ("required", "true")
+    let dayBookinglbl = document.createElement("option" )
+    dayBookinglbl.setAttribute("value","")
+    dayBookinglbl.setAttribute("disabled", "true")
+    dayBookinglbl.setAttribute("selected", "true")
+    dayBookinglbl.setAttribute("hidden","true")
+    dayBookinglbl.textContent = "Date"
+    dayBooking.appendChild(dayBookinglbl)
+    if(yearBooking.value%4==0 && monthBooking.value ==2){
+        for(let i=1; i<30; i++){
+            let dayOption =document.createElement("option")
+            dayOption.setAttribute("value", i)
+            dayOption.textContent = i
+            dayBooking.appendChild(dayOption)
+        }
+    }
+    else if (monthBooking.value == 2){
+        for(let i=1; i<29; i++){
+            let dayOption =document.createElement("option")
+            dayOption.setAttribute("value", i)
+            dayOption.textContent = i
+            dayBooking.appendChild(dayOption)
+        }
+    }
+    else {
+        for(let i=1; i<32; i++){
+            let dayOption =document.createElement("option")
+            dayOption.setAttribute("value", i)
+            dayOption.textContent = i
+            dayBooking.appendChild(dayOption)
+        }
+    }
+   
+
+    bookingDate.appendChild(bookingDatelbl)
+    bookingDate.appendChild(dayBooking)
+    bookingDate.appendChild(monthBooking)
+    bookingDate.appendChild(yearBooking)
+
+    partyInfo.appendChild(bookingDate)
+
+
+    let attendeeChoice = ["0-20", "21-50", "51+", "Not decided yet"]
+    //Attendees of the party
+    let attendeeContainer = document.createElement("div")
+    attendeeContainer.setAttribute("id","attendeeContainer")
+
+    let attendeeContainerlbl = document.createElement("p")
+    attendeeContainerlbl.textContent = "Attendees * "
+    attendeeContainer.appendChild(attendeeContainerlbl)
+
+
+    let attendee = document.createElement("select")
+    attendee.setAttribute("id", "attendee")
+    attendee.setAttribute ("required", "true")
+    let attendeelbl = document.createElement("option")
+    attendeelbl.setAttribute("value","")
+    attendeelbl.setAttribute("disabled", "true")
+    attendeelbl.setAttribute("selected", "true")
+    attendeelbl.setAttribute("hidden","true")
+    attendeelbl.textContent = "Quantity"
+    attendee.appendChild(attendeelbl)
+    for(let i in attendeeChoice){
+        let attendeeOption = document.createElement("option")
+        attendeeOption.setAttribute("value", attendeeChoice[i])
+        attendeeOption.textContent = attendeeChoice[i]
+        attendee.appendChild(attendeeOption)
+    }
+
+    attendeeContainer.appendChild(attendee)
+    partyInfo.appendChild(attendeeContainer)
+
+
+    //Party location
+    let locationContainer = document.createElement("div")
+    locationContainer.setAttribute("id", "partycontainer")
+    let locationContainerlbl = document.createElement("p")
+    locationContainerlbl.textContent = "Party Location"
+    locationContainer.appendChild(locationContainerlbl)
+
+    let Q1 = {
+        name: "Quan 1",
+        restaurant: [restaurants[0]]
+    }
+    let HCM ={
+        name: "Ho Chi Minh",
+        district: [Q1],
+    }
+
+    let HBT = {
+        name: "Quan Hai Ba Trung",
+        restaurant: [restaurants[1]]
+    }
+    let Hanoi = {
+        name: "Ha Noi",
+        district: [HBT],
+    }
+    let locations = [HCM, Hanoi]
+
+
+    let cityChoices = document.createElement("select")
+    cityChoices.setAttribute ("id","cityparty")
+    cityChoices.setAttribute ("required", "true")
+    let cityChoiceslbl = document.createElement("option")
+    cityChoiceslbl.setAttribute("value","")
+    cityChoiceslbl.setAttribute("disabled", "true")
+    cityChoiceslbl.setAttribute("selected", "true")
+    cityChoiceslbl.setAttribute("hidden","true")
+    cityChoiceslbl.textContent = "Province/City * "
+    cityChoices.appendChild(cityChoiceslbl)
+
+
+    let districtChoices = document.createElement("select")
+    districtChoices.setAttribute ("id","districtparty")
+    districtChoices.setAttribute ("required", "true")
+    let districtChoiceslbl = document.createElement("option")
+    districtChoiceslbl.setAttribute("value","")
+    districtChoiceslbl.setAttribute("disabled", "true")
+    districtChoiceslbl.setAttribute("selected", "true")
+    districtChoiceslbl.setAttribute("hidden","true")
+    districtChoiceslbl.textContent = "District * "
+    districtChoices.appendChild(districtChoiceslbl)
+
+    let restaurantChoices = document.createElement("select")
+    restaurantChoices.setAttribute ("id","restaurantparty")
+    restaurantChoices.setAttribute ("required", "true")
+    let restaurantChoiceslbl = document.createElement("option")
+    restaurantChoiceslbl.setAttribute("value","")
+    restaurantChoiceslbl.setAttribute("disabled", "true")
+    restaurantChoiceslbl.setAttribute("selected", "true")
+    restaurantChoiceslbl.setAttribute("hidden","true")
+    restaurantChoiceslbl.textContent = "Restaurant * "
+    restaurantChoices.appendChild(restaurantChoiceslbl)
+
+
+    for(let i in locations){
+        let cityOption = document.createElement("option")
+        cityOption.setAttribute("value", locations[i].city)
+        cityOption.textContent = locations[i].name
+        cityChoices.appendChild(cityOption)
+        for (let j in locations[i].district){
+            let districtOption = document.createElement("option")
+            districtOption.setAttribute("value", locations[i].district[j])
+            districtOption.textContent = locations[i].district[j].name
+            districtChoices.appendChild(districtOption)
+            for(let l in locations[i].district[j].restaurant){
+                let restaurantOption = document.createElement("option")
+                restaurantOption.setAttribute("value", locations[i].district[j].restaurant[l])
+                restaurantOption.textContent = locations[i].district[j].restaurant[l]
+                restaurantChoices.appendChild(restaurantOption)
+            }
+        }
+    }
+
+    let notes = document.createElement("textarea")
+    notes.setAttribute("placeholder","Notes for the restaurant...")
+
+    locationContainer.appendChild(cityChoices)
+    locationContainer.appendChild(districtChoices)
+    locationContainer.appendChild(restaurantChoices)
+    locationContainer.appendChild(notes)
+
+    partyInfo.appendChild(locationContainer)
+
+    bookingForm.appendChild(partyInfo)
+
+    //Done part of the party form
+    console.log(bookingForm)
+})
+
 
 
 
