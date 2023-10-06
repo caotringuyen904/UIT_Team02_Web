@@ -368,6 +368,7 @@ bookAParty_btn.addEventListener("click", function(){
     let birthdayType = document.createElement("input")
     birthdayType.setAttribute("type", "radio")
     birthdayType.setAttribute("id","birthday_type")
+    birthdayType.setAttribute("name","partytype")
     let birthdayTypelbl = document.createElement("label")
     birthdayTypelbl.setAttribute("for", "birthday_type")
     birthdayTypelbl.textContent = "Birthday Party"
@@ -378,6 +379,7 @@ bookAParty_btn.addEventListener("click", function(){
     let commonType = document.createElement("input")
     commonType.setAttribute("type", "radio")
     commonType.setAttribute("id","common_type")
+    commonType.setAttribute("name","partytype")
     let commonType_lbl = document.createElement("label")
     commonType_lbl.setAttribute("for", "common_type")
     commonType_lbl.textContent = "Party"
@@ -440,8 +442,7 @@ bookAParty_btn.addEventListener("click", function(){
 
 
 
-
-    //Day choices depend on year and month
+    //Day choices 
     let dayBooking = document.createElement("select")
     dayBooking.setAttribute("id", "daybooking")
     dayBooking.setAttribute ("required", "true")
@@ -452,29 +453,11 @@ bookAParty_btn.addEventListener("click", function(){
     dayBookinglbl.setAttribute("hidden","true")
     dayBookinglbl.textContent = "Date"
     dayBooking.appendChild(dayBookinglbl)
-    if(yearBooking.value%4==0 && monthBooking.value ==2){
-        for(let i=1; i<30; i++){
-            let dayOption =document.createElement("option")
-            dayOption.setAttribute("value", i)
-            dayOption.textContent = i
-            dayBooking.appendChild(dayOption)
-        }
-    }
-    else if (monthBooking.value == 2){
-        for(let i=1; i<29; i++){
-            let dayOption =document.createElement("option")
-            dayOption.setAttribute("value", i)
-            dayOption.textContent = i
-            dayBooking.appendChild(dayOption)
-        }
-    }
-    else {
-        for(let i=1; i<32; i++){
-            let dayOption =document.createElement("option")
-            dayOption.setAttribute("value", i)
-            dayOption.textContent = i
-            dayBooking.appendChild(dayOption)
-        }
+    for(let i=1; i<32; i++){
+        let dayOption =document.createElement("option")
+        dayOption.setAttribute("value", i)
+        dayOption.textContent = i
+        dayBooking.appendChild(dayOption)
     }
    
 
@@ -578,7 +561,6 @@ bookAParty_btn.addEventListener("click", function(){
     restaurantChoiceslbl.textContent = "Restaurant * "
     restaurantChoices.appendChild(restaurantChoiceslbl)
 
-
     for(let i in locations){
         let cityOption = document.createElement("option")
         cityOption.setAttribute("value", locations[i].city)
@@ -592,7 +574,7 @@ bookAParty_btn.addEventListener("click", function(){
             for(let l in locations[i].district[j].restaurant){
                 let restaurantOption = document.createElement("option")
                 restaurantOption.setAttribute("value", locations[i].district[j].restaurant[l])
-                restaurantOption.textContent = locations[i].district[j].restaurant[l]
+                restaurantOption.textContent = locations[i].district[j].restaurant[l].name
                 restaurantChoices.appendChild(restaurantOption)
             }
         }
@@ -610,8 +592,33 @@ bookAParty_btn.addEventListener("click", function(){
 
     bookingForm.appendChild(partyInfo)
 
-    //Done part of the party form
+    //Policy Agreement
+    let operationPolicy = document.createElement("a")
+    operationPolicy.setAttribute("href","https://dictionary.cambridge.org/dictionary/english/policy")
+    operationPolicy.textContent = "Operation Policy"
+  
+
+    let confidentialPolicy = document.createElement("a")
+    confidentialPolicy.setAttribute("href","https://dictionary.cambridge.org/dictionary/english/confidential")
+    confidentialPolicy.textContent = "Policy and Information Confidentiality of OldMan"
+
+
+    let policyCheckbox = document.createElement("input")
+    policyCheckbox.setAttribute("type", "checkbox")
+    policyCheckbox.setAttribute("id", "policycheckbox")
+    let policyCheckboxlbl = document.createElement("label")
+    policyCheckboxlbl.setAttribute("for", "policycheckbox")
+    policyCheckboxlbl.innerHTML = "I have read and accepted with " + operationPolicy + " and " + confidentialPolicy
+    console.log(policyCheckboxlbl)
+
+    let submitPartybtn = document.createElement("input")
+    submitPartybtn.setAttribute("type","submit")
+    submitPartybtn.textContent = "Submit Booking"
+    bookingForm.appendChild(policyCheckbox)
+    bookingForm.appendChild(policyCheckboxlbl)
+    bookingForm.appendChild(submitPartybtn)
     console.log(bookingForm)
+    partyHolder.appendChild(bookingForm)
 })
 
 
