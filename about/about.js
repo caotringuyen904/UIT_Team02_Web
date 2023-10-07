@@ -149,7 +149,12 @@ promotionNew_btn.addEventListener("click", function(){
         promotionDcsBtn.textContent = "-"
         promotionDcsBtn.setAttribute("id", "dcs_btn")
         promotionDcsBtn.addEventListener("click", function(){
-            promotions[i].inCart--
+            if(promotions[i].inCart == 0){
+                promotions[i].inCart = 0;
+            }
+            else{
+                promotions[i].inCart--
+            }
             promotionQuantity.textContent = promotions[i].inCart
         })
         //generate add to cart button of promotion food
