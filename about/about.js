@@ -694,6 +694,7 @@ bookAParty_btn.addEventListener("click", function(){
     let policyCheckbox = document.createElement("input")
     policyCheckbox.setAttribute("type", "checkbox")
     policyCheckbox.setAttribute("id", "policycheckbox")
+    policyCheckbox.setAttribute("required", "true")
     let policyCheckboxlbl = document.createElement("label")
     policyCheckboxlbl.setAttribute("id","policycheckboxlbl")
     policyCheckboxlbl.setAttribute("for", "policycheckbox")
