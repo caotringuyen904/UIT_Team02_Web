@@ -1,11 +1,3 @@
-
-// fetch('/UIT_Team02_Web/food/data.JSON').then((res) => res.json()).then((data) => {console.log(data);});
-
-// console.log(test1);
-
-import data from './data.JSON' assert { type: "json" };
-
-console.log(data);
 let products = [
     {
         id: 1,
@@ -259,7 +251,7 @@ function setItems(product) {
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     console.log("cartItems", cartItems);
-    
+
     if (cartItems != null) {
         if (cartItems[product.productImg] == undefined) {
             cartItems = {
@@ -353,6 +345,8 @@ window.onload = () => {
 }
 
 
+
+// render detail page
 const productImages = document.getElementsByClassName('image-container');
 
 for (let i = 0; i < productImages.length; i++) {
@@ -371,7 +365,7 @@ function setProductDetail(product) {
 
     // Store the string in localStorage
     localStorage.setItem('productData', productString);
-    
+
 }
 
 

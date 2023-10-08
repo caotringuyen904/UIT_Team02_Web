@@ -1,5 +1,4 @@
 
-// import products from "./index.js";
 //RENDER BUILD CART
 
 function onLoadCartNumbers() {
@@ -11,7 +10,7 @@ function onLoadCartNumbers() {
 onLoadCartNumbers();
 
 function displayCart() {
-    
+
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     console.log(cartItems);
@@ -19,6 +18,7 @@ function displayCart() {
     let productContainer = document.querySelector('.products-container');
     let productTotal = document.querySelector('.product-total')
     let cartCost = localStorage.getItem('totalCost');
+
 
     // console.log(cartItems);
     // console.log(typeof cartItems);
@@ -59,6 +59,7 @@ function displayCart() {
              <span>Total cost: &nbsp&nbsp </span>
               <span> ${cartCost}.00$</span>
         </div> `;
+        
     }
 }
 
@@ -113,17 +114,17 @@ function changeQuantity(itemName, operation) {
     onLoadCartNumbers();
 
 
-     //update TotalCost
-     const prices = cartItemsArray.map(price => price.inCart * price.productPrice);
-     const sumPrice = prices.reduce((acc, cur) => acc + cur, 0);
- 
-     console.log(sumPrice);
- 
-     localStorage.setItem('totalCost', sumPrice);
- 
-     console.log(sumPrice);
-     //update TotalCost //
-     
+    //update TotalCost
+    const prices = cartItemsArray.map(price => price.inCart * price.productPrice);
+    const sumPrice = prices.reduce((acc, cur) => acc + cur, 0);
+
+    console.log(sumPrice);
+
+    localStorage.setItem('totalCost', sumPrice);
+
+    console.log(sumPrice);
+    //update TotalCost //
+
     displayCart();
 
 }
@@ -177,4 +178,13 @@ function removeProduct(itemId) {
 }
 
 
-
+// GO TO CHECKOUT PAGE
+function goToCheckout() {
+    let cartItemsArray = JSON.parse(localStorage.getItem('productsInCart')) || [];
+    
+    // Update the cartItemsArray in localStorage
+    localStorage.setItem('productsInCart', JSON.stringify(cartItemsArray));
+    
+    // Redirect to the checkout page (you can replace 'checkout.html' with your actual checkout page URL)
+    window.location.href = 'checkout.html';
+}
