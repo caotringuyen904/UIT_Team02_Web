@@ -249,7 +249,7 @@ career_btn.addEventListener("click", function(){
     submitBtn.setAttribute("type","submit")
     submitBtn.setAttribute("id","submit_btn")
     submitBtn.value = "Submit"
-    submitBtn.addEventListener("click",function(){
+    form.addEventListener("submit",function(){
         let candidate = {
             submitID: dataList.value + candidateEmail.value,
             position: dataList.value,
@@ -257,7 +257,7 @@ career_btn.addEventListener("click", function(){
             lastName: candidateLName.value,
             contactEMail: candidateEmail.value,
         }
-        console.log(candidate)
+        alert("Submit secessfully")
         localStorage.setItem(JSON.stringify(candidate.submitID),JSON.stringify(candidate))
     })
     let resetBtn = document.createElement("input")
@@ -284,17 +284,24 @@ bookAParty_btn.addEventListener("click", function(){
     storyHolder.innerHTML = ""
     partyHolder.innerHTML = ""
 
+   
 
     //Generate a form container for party booking form
-    let bookingForm = document.createElement("form")
 
     let bookingTitle = document.createElement("p")
     bookingTitle.textContent = "BOOKING FORM"
+    bookingTitle.setAttribute("id", "bookingtitle")
     let bookingImg = document.createElement("img")
     bookingImg.setAttribute("src", "./Info_img/party_1300x325.png")
     bookingImg.setAttribute("id","booking_img")
-    bookingForm.appendChild(bookingTitle)
-    bookingForm.appendChild(bookingImg)
+    partyHolder.appendChild(bookingTitle)
+    partyHolder.appendChild(bookingImg)
+
+    let bookingForm = document.createElement("form")
+    bookingForm.setAttribute("id","bookingform")
+
+    
+
 
     //Generate div for personal Infomation of customer
     let personalInfo = document.createElement("div")
@@ -376,6 +383,7 @@ bookAParty_btn.addEventListener("click", function(){
     birthdayType.setAttribute("name","partytype")
     let birthdayTypelbl = document.createElement("label")
     birthdayTypelbl.setAttribute("for", "birthday_type")
+    birthdayTypelbl.setAttribute("id","birthday_type_lbl")
     birthdayTypelbl.textContent = "Birthday Party"
     partyType.appendChild(birthdayType)
     partyType.appendChild(birthdayTypelbl)
@@ -400,7 +408,26 @@ bookAParty_btn.addEventListener("click", function(){
     bookingDate.setAttribute("id", "bookingdate")
     //label for booking date component
     let bookingDatelbl = document.createElement("p")
+    bookingDatelbl.setAttribute("id","bookingdatelbl")
     bookingDatelbl.textContent = "Party date * "
+
+    //Function generate option
+    function generateMonthOptions (month_Booking){
+        for(let i=1; i<13; i++){
+            let monthOption =document.createElement("option")
+            monthOption.setAttribute("value", i)
+            monthOption.textContent = i
+            month_Booking.appendChild(monthOption)
+        }
+    }
+    function generateDayOptions (day_Booking, limit){
+        for(let i=1; i<limit+1; i++){
+            let dayOption =document.createElement("option")
+            dayOption.setAttribute("value", i)
+            dayOption.textContent = i
+            day_Booking.appendChild(dayOption)
+        }
+    }
 
     //Year choosen (current year and next year)
     let yearBooking = document.createElement("select")
@@ -421,9 +448,6 @@ bookAParty_btn.addEventListener("click", function(){
         yearBooking.appendChild(yearOption)
     }
     
-
-
-
     //Month choices only 12 in a year
     let monthBooking = document.createElement("select")
     monthBooking.setAttribute("id", "monthbooking")
@@ -435,18 +459,7 @@ bookAParty_btn.addEventListener("click", function(){
     monthBookinglbl.setAttribute("hidden","true")
     monthBookinglbl.textContent = "Month"
     monthBooking.appendChild(monthBookinglbl)
-    for(let i=1; i<13; i++){
-        let monthOption =document.createElement("option")
-        monthOption.setAttribute("value", i)
-        monthOption.textContent = i
-        monthBooking.appendChild(monthOption)
-    }
- 
-
-
-
-
-
+    
     //Day choices 
     let dayBooking = document.createElement("select")
     dayBooking.setAttribute("id", "daybooking")
@@ -458,12 +471,37 @@ bookAParty_btn.addEventListener("click", function(){
     dayBookinglbl.setAttribute("hidden","true")
     dayBookinglbl.textContent = "Date"
     dayBooking.appendChild(dayBookinglbl)
-    for(let i=1; i<32; i++){
-        let dayOption =document.createElement("option")
-        dayOption.setAttribute("value", i)
-        dayOption.textContent = i
-        dayBooking.appendChild(dayOption)
-    }
+
+    //Generate option for month and day
+    yearBooking.addEventListener("change",function(){
+        if(yearBooking.value%4 == 0){
+            generateMonthOptions(monthBooking)
+            monthBooking.addEventListener("change",function(){
+                if(monthBooking.value == 4 || monthBooking.value == 6 || monthBooking.value == 9 || monthBooking.value == 11){
+                    generateDayOptions(dayBooking, 30)
+                }
+                else if (monthBooking.value == 2){
+                    generateDayOptions(dayBooking, 29)
+                }
+                else{
+                    generateDayOptions(dayBooking, 31)
+                }
+            })
+        }else{
+            generateMonthOptions(monthBooking)
+            monthBooking.addEventListener("change",function(){
+                if(monthBooking.value == 4 || monthBooking.value == 6 || monthBooking.value == 9 || monthBooking.value == 11){
+                    generateDayOptions(dayBooking, 30)
+                }
+                else if (monthBooking.value == 2){
+                    generateDayOptions(dayBooking, 28)
+                }
+                else{
+                    generateDayOptions(dayBooking, 31)
+                }
+            })
+        }
+    })
    
 
     bookingDate.appendChild(bookingDatelbl)
@@ -509,6 +547,7 @@ bookAParty_btn.addEventListener("click", function(){
     let locationContainer = document.createElement("div")
     locationContainer.setAttribute("id", "partycontainer")
     let locationContainerlbl = document.createElement("p")
+    locationContainerlbl.setAttribute("id","locationcontainerlbl")
     locationContainerlbl.textContent = "Party Location"
     locationContainer.appendChild(locationContainerlbl)
 
@@ -533,67 +572,110 @@ bookAParty_btn.addEventListener("click", function(){
 
 
     let cityChoices = document.createElement("select")
-    cityChoices.setAttribute ("id","cityparty")
-    cityChoices.setAttribute ("required", "true")
-    let cityChoiceslbl = document.createElement("option")
-    cityChoiceslbl.setAttribute("value","")
-    cityChoiceslbl.setAttribute("disabled", "true")
-    cityChoiceslbl.setAttribute("selected", "true")
-    cityChoiceslbl.setAttribute("hidden","true")
-    cityChoiceslbl.textContent = "Province/City * "
-    cityChoices.appendChild(cityChoiceslbl)
-
+    function generateCityChoices(cityChoices){
+        
+        cityChoices.setAttribute ("id","cityparty")
+        cityChoices.setAttribute ("required", "true")
+        let cityChoiceslbl = document.createElement("option")
+        cityChoiceslbl.setAttribute("value","")
+        cityChoiceslbl.setAttribute("disabled", "true")
+        cityChoiceslbl.setAttribute("selected", "true")
+        cityChoiceslbl.setAttribute("hidden","true")
+        cityChoiceslbl.textContent = "Province/City * "
+        cityChoices.appendChild(cityChoiceslbl)
+    }
+    generateCityChoices(cityChoices)
+    
 
     let districtChoices = document.createElement("select")
-    districtChoices.setAttribute ("id","districtparty")
-    districtChoices.setAttribute ("required", "true")
-    let districtChoiceslbl = document.createElement("option")
-    districtChoiceslbl.setAttribute("value","")
-    districtChoiceslbl.setAttribute("disabled", "true")
-    districtChoiceslbl.setAttribute("selected", "true")
-    districtChoiceslbl.setAttribute("hidden","true")
-    districtChoiceslbl.textContent = "District * "
-    districtChoices.appendChild(districtChoiceslbl)
+    function generateDistrictChoices (districtChoices){
+        districtChoices.setAttribute ("id","districtparty")
+        districtChoices.setAttribute ("required", "true")
+        let districtChoiceslbl = document.createElement("option")
+        districtChoiceslbl.setAttribute("value","")
+        districtChoiceslbl.setAttribute("disabled", "true")
+        districtChoiceslbl.setAttribute("selected", "true")
+        districtChoiceslbl.setAttribute("hidden","true")
+        districtChoiceslbl.textContent = "District * "
+        districtChoices.appendChild(districtChoiceslbl)
+    }
+    generateDistrictChoices(districtChoices)
+    
+    
 
     let restaurantChoices = document.createElement("select")
-    restaurantChoices.setAttribute ("id","restaurantparty")
-    restaurantChoices.setAttribute ("required", "true")
-    let restaurantChoiceslbl = document.createElement("option")
-    restaurantChoiceslbl.setAttribute("value","")
-    restaurantChoiceslbl.setAttribute("disabled", "true")
-    restaurantChoiceslbl.setAttribute("selected", "true")
-    restaurantChoiceslbl.setAttribute("hidden","true")
-    restaurantChoiceslbl.textContent = "Restaurant * "
-    restaurantChoices.appendChild(restaurantChoiceslbl)
+    function generateRestaurantChoices (restaurantChoices){
+        restaurantChoices.setAttribute ("id","restaurantparty")
+        restaurantChoices.setAttribute ("required", "true")
+        let restaurantChoiceslbl = document.createElement("option")
+        restaurantChoiceslbl.setAttribute("value","")
+        restaurantChoiceslbl.setAttribute("disabled", "true")
+        restaurantChoiceslbl.setAttribute("selected", "true")
+        restaurantChoiceslbl.setAttribute("hidden","true")
+        restaurantChoiceslbl.textContent = "Restaurant * "
+        restaurantChoices.appendChild(restaurantChoiceslbl)
+    }
+    generateRestaurantChoices(restaurantChoices)
+    
 
+    //Generate choices for location
     for(let i in locations){
         let cityOption = document.createElement("option")
-        cityOption.setAttribute("value", locations[i].city)
+        cityOption.setAttribute ("value", locations[i].name)
         cityOption.textContent = locations[i].name
         cityChoices.appendChild(cityOption)
-        for (let j in locations[i].district){
-            let districtOption = document.createElement("option")
-            districtOption.setAttribute("value", locations[i].district[j])
-            districtOption.textContent = locations[i].district[j].name
-            districtChoices.appendChild(districtOption)
-            for(let l in locations[i].district[j].restaurant){
-                let restaurantOption = document.createElement("option")
-                restaurantOption.setAttribute("value", locations[i].district[j].restaurant[l])
-                restaurantOption.textContent = locations[i].district[j].restaurant[l].name
-                restaurantChoices.appendChild(restaurantOption)
-            }
-        }
     }
+    
+    cityChoices.addEventListener("change", function(){
+        districtChoices.innerHTML=""
+        generateDistrictChoices(districtChoices)
+        for(let i in locations){
+            if (cityChoices.value == locations[i].name){
+                for (let j in locations[i].district){
+                    let districtOption = document.createElement("option")
+                    districtOption.setAttribute ("value", locations[i].district[j].name)
+                    districtOption.textContent = locations[i].district[j].name
+                    districtChoices.appendChild(districtOption)
+                } 
+            }
+            else continue;
+        }
+    })
+
+    districtChoices.addEventListener("change",function(){
+        restaurantChoices.innerHTML=""
+        generateRestaurantChoices(restaurantChoices)
+        for(let i in locations){
+            if (cityChoices.value == locations[i].name){
+                for (let j in locations[i].district){
+                    if(districtChoices.value == locations[i].district[j].name){
+                        for(let l in locations[i].district[j].restaurant){
+                            let restaurantOption = document.createElement("option")
+                            restaurantOption.setAttribute ("value", locations[i].district[j].restaurant[l].name)
+                            restaurantOption.textContent = locations[i].district[j].restaurant[l].name
+                            restaurantChoices.appendChild(restaurantOption)
+                        }
+                    }
+                    else continue;
+                } 
+            }
+            else continue;
+        }
+    })
+    
+  
 
     let notes = document.createElement("textarea")
+    notes.setAttribute("id","notes")
     notes.setAttribute("placeholder","Notes for the restaurant...")
 
     locationContainer.appendChild(cityChoices)
     locationContainer.appendChild(districtChoices)
     locationContainer.appendChild(restaurantChoices)
-    locationContainer.appendChild(notes)
+    
 
     partyInfo.appendChild(locationContainer)
+    partyInfo.appendChild(notes)
 
     bookingForm.appendChild(partyInfo)
 
@@ -607,23 +689,68 @@ bookAParty_btn.addEventListener("click", function(){
     confidentialPolicy.setAttribute("href","https://dictionary.cambridge.org/dictionary/english/confidential")
     confidentialPolicy.textContent = "Policy and Information Confidentiality of OldMan"
 
-
+    let policyContainer = document.createElement("div")
+    policyContainer.setAttribute("id","policycontainer")
     let policyCheckbox = document.createElement("input")
     policyCheckbox.setAttribute("type", "checkbox")
     policyCheckbox.setAttribute("id", "policycheckbox")
     let policyCheckboxlbl = document.createElement("label")
+    policyCheckboxlbl.setAttribute("id","policycheckboxlbl")
     policyCheckboxlbl.setAttribute("for", "policycheckbox")
-    policyCheckboxlbl.innerHTML = "I have read and accepted with " + operationPolicy + " and " + confidentialPolicy
-    console.log(policyCheckboxlbl)
+    policyCheckboxlbl.innerHTML = "I have read and accepted with "
+    policyCheckboxlbl.appendChild(operationPolicy)
+    policyCheckboxlbl.innerHTML += " and "
+    policyCheckboxlbl.appendChild(confidentialPolicy)
 
     let submitPartybtn = document.createElement("input")
     submitPartybtn.setAttribute("type","submit")
+    submitPartybtn.setAttribute("id","submitpartybtn")
     submitPartybtn.textContent = "Submit Booking"
-    bookingForm.appendChild(policyCheckbox)
-    bookingForm.appendChild(policyCheckboxlbl)
+    policyContainer.appendChild(policyCheckbox)
+    policyContainer.appendChild(policyCheckboxlbl)
+    bookingForm.appendChild(policyContainer)
     bookingForm.appendChild(submitPartybtn)
     console.log(bookingForm)
     partyHolder.appendChild(bookingForm)
+
+    bookingForm.addEventListener("submit", function(){
+        function getPartyType (){
+            let Type = [commonType, birthdayType]
+            for(let i in Type){
+                if(Type[i].checked){
+                    return Type[i].value
+                }
+                else continue
+            }
+        }
+        let partyBookingSubmit = {
+            
+            customer:{
+                childName: fullNameChild.value,
+                parentName: fullNameParent.value,
+                phone: customerPhone,
+                email: customerEMail,
+            },
+            party: {
+                type: getPartyType().textContent,
+                time:{
+                    date: dayBooking.value,
+                    month: monthBooking.value,
+                    year: yearBooking.value
+                },
+                attendee: attendee.value,
+                location:{
+                    city: cityChoices.value,
+                    district: districtChoices.value,
+                    restaurant: restaurantChoices.value
+                },
+                note: notes.value,
+            }
+        }
+        
+        localStorage.setItem("bookingsubmit", JSON.stringify(partyBookingSubmit))
+        alert("Booking sucessfully")
+    })
 })
 
 
@@ -658,3 +785,4 @@ bookAParty_btn.addEventListener("click", function(){
     pageUp_btn.setAttribute("href", "#")
     pageUp_btn.setAttribute("id", "pageup_btn")
     footerHolder.appendChild(pageUp_btn)
+

@@ -199,6 +199,84 @@ Styling the Career
     background-color: red;
 }
 /*
+Styling the book party
+*/
+#bookingform{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+}
+#bookingtitle{
+    text-align: center;
+    font-size: 2.5rem;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#personal_info{
+    display: grid;
+    grid-template-rows: auto;
+    gap: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+#personal_info p, #personal_info label {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#party_info{
+    display: grid;
+    grid-template-rows: auto;
+    gap: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+#party_info p, #party_info label, #party_info select{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#birthday_type_lbl{
+    margin-right: 20px;
+}
+#bookingdate{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+#bookingdatelbl{
+    grid-column: 1/4;
+}
+#partycontainer{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+#locationcontainerlbl{
+    grid-column: 1/4;
+}
+#notes{
+    height: 100px;
+}
+#policycontainer{
+    grid-column: 1/3;
+    margin-bottom: 30px;
+    text-align: center;
+}
+#submitpartybtn{
+    grid-column: 1/3;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100px;
+    margin-left:45%;
+}
+#bookingform a{
+    font: inherit;
+    color: rgb(0, 0, 0, 0.5);
+    text-shadow: none;
+}
+#bookingform a:hover{
+    color:red;
+}
+/*
 Styling the footer
 */
 
@@ -238,7 +316,6 @@ Styling the footer
 }
 #pageup_btn{
     width: 35px;
-    margin-left: 50%;
     text-align: center;
     align-items: center;
     padding-top: 0.5rem;
@@ -344,7 +421,7 @@ media query
 
 
 
-@media screen and (min-width: 540px) {
+@media screen and (max-width: 920px) {
     /*For the intro*/
     html{
         margin: 0;
@@ -354,15 +431,26 @@ media query
     }
     
     .intro_img{
-        width: 200px;
+        width: 300px;
         height:auto;
     }
     .intro p{
         font-size: 2rem;
+    }
+    .about_us_btn button{
+        font-size: 0.8rem;
     }
       /*For the promotion*/
     #promotionholder section img{
         width: 150px;
         height: fit-content;
     }
+    #footer #footer_title{
+        font-size: 1rem;  
+        margin: 5px;
+    }
+    #footer p, a{
+        font-size: 0.8rem;
+    }
+  
 }
