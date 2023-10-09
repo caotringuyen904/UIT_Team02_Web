@@ -136,7 +136,7 @@ input::-webkit-outer-spin-button {
 }
 
 .payment-method {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 30px;
   margin-bottom: 40px;
@@ -145,29 +145,46 @@ input::-webkit-outer-spin-button {
 .payment-method .method {
   border: 1px solid var(--quick-silver);
   border-radius: var(--radius);
-  width: 50%;
+  margin-bottom: 10px;
+  width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   padding: 15px 30px;
   gap: 20px;
   cursor: pointer;
+}
+
+.method-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .payment-method .selected {
   border-color: var(--azure);
 }
 
-.payment-method .method ion-icon {
+.payment-method .method ion-icon,
+.payment-method .method .method-img {
   font-size: 20px;
+  margin-right: 10px;
 }
 
 .payment-method .method .checkmark {
-  margin-left: auto;
   color: var(--quick-silver);
+  margin-left: auto;
+}
+
+.payment-method .method .services {
+  margin-left: 50px;
 }
 
 .payment-method .method .fill {
   color: var(--azure);
+}
+
+.payment-method .method form {
+  width: 100%;
 }
 
 .label-default {
@@ -175,6 +192,7 @@ input::-webkit-outer-spin-button {
   margin-bottom: 5px;
   font-size: var(--fs-14);
   color: var(--spanish-gray);
+  text-align: left;
 }
 
 .input-default {
@@ -190,6 +208,7 @@ input::-webkit-outer-spin-button {
 }
 
 .cardholder-name,
+.bank-name,
 .card-number {
   margin-bottom: 20px;
 }
@@ -249,6 +268,8 @@ input::-webkit-outer-spin-button {
 
 .cart-item-box {
   padding: 40px var(--px);
+  height: 60vh;
+  overflow-y: auto;
   margin-bottom: auto;
 }
 
@@ -373,6 +394,13 @@ input::-webkit-outer-spin-button {
 
 .wrapper .submit-payment button {
   margin: auto;
+}
+
+.shrink-form {
+  transition: height 0.5s ease, opacity 0.5s ease;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 
 @media (max-width: 1200px) {
