@@ -15,19 +15,19 @@ const partyHolder = document.getElementById("partyholder")
 //Initialize story object
 const story = [
 {
-    story_img:"/about/Info_img/story_chicken_1_500x500.png",
+    story_img:"/UIT_Team02_Web/about/Info_img/story_chicken_1_500x500.png",
     story_content:"Once upon a time, there was an old man call The Oldman who had a dream of opening his own fried chicken restaurant. He had always loved fried chicken, and he believed that he could make the best fried chicken in the world. The Oldman worked hard to save up enough money to open his restaurant. He also spent years perfecting his fried chicken recipe. She experimented with different flours, seasonings, and cooking methods until he finally found the perfect combination.When The Oldman finally opened his restaurant, he called it The Oldman he was excited to share his delicious fried chicken with the world"
 },
 {
-    story_img:"/about/Info_img/story_chicken_2_743x570.png",
+    story_img:"/UIT_Team02_Web/about/Info_img/story_chicken_2_743x570.png",
     story_content:"The Oldman Fried Chicken was a hit from the start. People loved his crispy, juicy chicken and his flavorful seasonings. The Oldman's restaurant quickly became a popular spot for locals and tourists alike. The Oldman was passionate about his food and his customers. He loved interacting with his customers and hearing their feedback. He was also always looking for ways to improve his menu and his restaurant. One day, The Oldman decided to enter his fried chicken in a local cooking contest. He was up against some of the best chefs in the city, but He was confident in his recipe. The Oldman's fried chicken won the contest! his chicken was praised by the judges for its flavor, texture, and presentation"
 },
 {
-    story_img:"/about/Info_img/story_chicken_3_500x500.png",
+    story_img:"/UIT_Team02_Web/about/Info_img/story_chicken_3_500x500.png",
     story_content:"After The Old man won the cooking contest, her restaurant became even more popular. People from all over the country came to try her fried chicken. The Old man even started receiving offers from investors who wanted to help her expand her business. The Old man was proud of what she had accomplished. She had started out with a small dream, and she had turned it into a successful business. She was also grateful for the support of her customers and her team."
 },
 {
-    story_img:"/about/Info_img/story_chicken_4_461x336.png"
+    story_img:"/UIT_Team02_Web/about/Info_img/story_chicken_4_461x336.png"
     ,
     story_content:"The Old man's Fried Chicken is now a national chain with restaurants all over the country. The Old man herself is a celebrity chef, and she has appeared on numerous cooking shows and magazines. She is also an inspiration to many young entrepreneurs who dream of starting their own businesses.The Old man's story is a reminder that anything is possible if you have a dream and you're willing to work hard. It's also a reminder that the best food is made with love and passion."
 }
@@ -38,7 +38,7 @@ console.log(story)
 //Initialize Promotion object
 let promotions =[
 {
-    id:"protmotion01",
+    id:1,
     inCart:0,
     productImg:"./Info_img/combo_chicken_500x500.png",
     productTitle: "Chicken Bucket Medium",
@@ -48,7 +48,7 @@ let promotions =[
     type: 'Promotion Fried Chicken'
 },
 {
-    id:"protmotion02",
+    id:2,
     inCart:0,
     productImg:"./Info_img/combo_chicken_2_800x625.png",
     productTitle: "Chicken Disk",
@@ -58,7 +58,7 @@ let promotions =[
     type: 'Promotion Fried Chicken'
 },
 {
-    id:"protmotion03",
+    id:3,
     inCart:0,
     productImg:"./Info_img/combo_chicken_3_466x419.png",
     productTitle: "Chicken Bucket Large",
@@ -116,6 +116,7 @@ promotionNew_btn.addEventListener("click", function(){
     careerHolder.innerHTML = ""
     storyHolder.innerHTML = ""
     partyHolder.innerHTML = ""
+    let promotionToCart =[]
     for(let i in promotions){
         //generate a container for promotion
         let promotionBox = document.createElement("section")
@@ -158,13 +159,40 @@ promotionNew_btn.addEventListener("click", function(){
             promotionQuantity.textContent = promotions[i].inCart
         })
         //generate add to cart button of promotion food
+        
         let addToCart = document.createElement("button")
         addToCart.textContent = "Add To Cart"
         addToCart.setAttribute("id", "addtocart_btn")
         addToCart.addEventListener("click", function(){
-            let temp = promotions[i]
-            localStorage.setItem(JSON.stringify(promotions[i].id),JSON.stringify(promotions[i]))
-            alert("Sucessfully add to cart this item")
+            if(promotions[i].inCart == 0){
+                if(promotionToCart.includes(promotions[i])){
+                    for(let j in promotionToCart){
+                        if(promotionToCart[j]===promotions[i]){
+                            promotionToCart[j].inCart++
+                            promotions[i].inCart = promotionToCart[j].inCart
+                            promotionQuantity.textContent = promotions[i].inCart
+                        }
+                    }
+                }else{
+                    promotions[i].inCart++
+                    promotionToCart.push(promotions[i])
+                    promotionQuantity.textContent = promotions[i].inCart
+                }   
+            }else{
+                if(promotionToCart.includes(promotions[i])){
+                    for(let j in promotionToCart){
+                        if(promotionToCart[j]===promotions[i]){
+                            
+                            promotionToCart[j].inCart = promotions[i].inCart
+                            promotionQuantity.textContent = promotions[i].inCart
+                        }
+                    }
+                }else{
+                    promotionToCart.push(promotions[i])
+                }
+            }
+          
+            localStorage.setItem("promotion",JSON.stringify(promotionToCart))
         })
         //add all the component of promotion box into the box
         promotionBox.appendChild(promotionName)
@@ -413,6 +441,7 @@ bookAParty_btn.addEventListener("click", function(){
 
     //Function generate option
     function generateMonthOptions (month_Booking){
+        monthBooking.innerHTML ="";
         for(let i=1; i<13; i++){
             let monthOption =document.createElement("option")
             monthOption.setAttribute("value", i)
@@ -421,6 +450,7 @@ bookAParty_btn.addEventListener("click", function(){
         }
     }
     function generateDayOptions (day_Booking, limit){
+        dayBooking.innerHTML=""
         for(let i=1; i<limit+1; i++){
             let dayOption =document.createElement("option")
             dayOption.setAttribute("value", i)
@@ -786,5 +816,3 @@ bookAParty_btn.addEventListener("click", function(){
     pageUp_btn.setAttribute("href", "#")
     pageUp_btn.setAttribute("id", "pageup_btn")
     footerHolder.appendChild(pageUp_btn)
-
->>>>>>> 0ca8cd673f354cf08ed1b8a700d5a534988c7192
