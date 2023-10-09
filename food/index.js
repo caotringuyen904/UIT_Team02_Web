@@ -65,7 +65,7 @@ let products = [
     {
         id: 8,
         inCart: 0,
-        productImg: "./images/f-chicken-combo.png",
+        productImg: "./images/f-chicken-cbx.png",
         productTitle: "Combo happy",
         productPrice: 14,
         productDescription: "Some quick example text to build on the card title and make up the bulk of the card's content.",

@@ -21,9 +21,9 @@ function onLoadCartNumbers() {
 onLoadCartNumbers();
 
 function displayCart() {
-    // let cartItems = localStorage.getItem('productsInCart');
-    // cartItems = JSON.parse(cartItems);
-    // console.log(cartItems);
+    let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems);
+    console.log(cartItems);
 
     let productContainer = document.querySelector('.products-container');
     let productTotal = document.querySelector('.product-total')
@@ -70,27 +70,21 @@ function displayCart() {
 displayCart();
 
 function changeQuantity(itemName, operation) {
-    // let combinedCartArray = JSON.parse(localStorage.getItem('productsInCart')) || [];
-    console.log(combinedCartArray);
-
     const index = combinedCartArray.findIndex(item => item.productTitle === itemName);
-    console.log(index);
 
     if (index !== -1) {
         if (operation === 'increase') {
             combinedCartArray[index].inCart += 1;
         } else if (operation === 'decrease') {
-            combinedCartArray[index].inCart -= 1;
+            if (combinedCartArray[index].inCart > 1) {
+                combinedCartArray[index].inCart -= 1;
+            } else {
+                // If the quantity is 1 or less, remove the item from the cart
+                combinedCartArray.splice(index, 1);
+            }
         }
-
-        if (combinedCartArray[index].inCart < 0) {
-            combinedCartArray[index].inCart = 0;
-        }
-
-        console.log(combinedCartArray[index].inCart);
 
         localStorage.setItem('productsInCart', JSON.stringify(combinedCartArray));
-        console.log('Array in localStorage updated:', combinedCartArray);
 
         // Update cartNumbers in cartPage
         const cartNumbers = combinedCartArray.map(cartNum => cartNum.inCart);
@@ -101,12 +95,7 @@ function changeQuantity(itemName, operation) {
         // Update TotalCost
         const prices = combinedCartArray.map(price => price.inCart * price.productPrice);
         const sumPrice = prices.reduce((acc, cur) => acc + cur, 0);
-
-        console.log(sumPrice);
-
         localStorage.setItem('totalCost', sumPrice);
-
-        console.log(sumPrice);
 
         displayCart();
     } else {

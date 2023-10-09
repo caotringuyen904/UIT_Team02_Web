@@ -13,11 +13,12 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/UIT_Team02_Web/about/about.css">
 
 </head>
 
 <body>
-    <header>
+    <header id="bgColorHeader">
         <a href="#" class="logo">
             <img class="logoonggia" width="100px" src="images/logoOngGia.png">
         </a>
@@ -30,7 +31,7 @@
             <a href="/UIT_Team02_Web/about/about.html">About</a>
 
             <a class="admin-container" href="../admin/admin.html">Admin</a>
-            
+
             <a class="cart" href="cart.html">
                 <i class="fa fa-shopping-cart" style="font-size:18px">
                     <span class='badge badge-danger' id='lblCartCount'>0</span></i>
@@ -54,26 +55,47 @@
         </div>
     </section>
 
-    <div class="wrapper">
-        <div id="search-container">
-            <input type="search" id="search-input" placeholder="search product name here..." />
-            <button id="search">Search</button>
+    <div class="wapper-buttonFilter">
+        <div id="wrapper">
+            <div id="search-container">
+                <input type="search" id="search-input" placeholder="search product name here..." />
+                <button id="search">Search</button>
+            </div>
+        </div>
+
+
+        <div id="button" class="active">
+            <button onclick="handleFilterProduct('ALL')" class="btn btn-danger ">ALL</button>
+            <button onclick="handleFilterProduct('BURGER')" class="btn btn-danger">BURGER</button>
+            <button onclick="handleFilterProduct('CHICKEN')" class="btn btn-danger">CHICKEN</button>
+            <button onclick="handleFilterProduct('CAKE')" class="btn btn-danger">CAKE</button>
+            <button onclick="handleFilterProduct('DESSERT')" class="btn btn-danger">DESSERT</button>
         </div>
     </div>
 
 
-    <div id="button" class="active">
-        <button onclick="handleFilterProduct('ALL')" class="btn btn-danger ">ALL</button>
-        <button onclick="handleFilterProduct('BURGER')" class="btn btn-danger">BURGER</button>
-        <button onclick="handleFilterProduct('CHICKEN')" class="btn btn-danger">CHICKEN</button>
-        <button onclick="handleFilterProduct('CAKE')" class="btn btn-danger">CAKE</button>
-        <button onclick="handleFilterProduct('DESSERT')" class="btn btn-danger">DESSERT</button>
-    </div>
-
     <div id="box-container" class="box-container">
 
     </div>
-    
+
+    <section id="footer">
+        <p id="footer_title">Old Man Restaurant</p>
+        <article>
+            <p>Ho Chi Minh branch</p>
+            <address><a
+                    href="https://www.google.com/search?q=restaurant+viet+nam+address&amp;sca_esv=570269325&amp;rlz=1C1ONGR_enVN979VN979&amp;sxsrf=AM9HkKmVtlPva1EE5P-mCSa3v_GEl_qdUA%3A1696317370377&amp;ei=ur8bZavSFqGC2roP96uj2A8&amp;oq=restaurant+viet+nam+add&amp;gs_lp=Egxnd3Mtd2l6LXNlcnAiF3Jlc3RhdXJhbnQgdmlldCBuYW0gYWRkKgIIADIFECEYoAEyBRAhGKABMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIKECEYFhgeGA8YHUi9DVBEWKcIcAF4AZABAJgBlgGgAbsEqgEDMC40uAEByAEA-AEBwgIKEAAYRxjWBBiwA8ICBxAAGIAEGArCAgYQABgWGB7CAgIQJsICBBAhGBXiAwQYACBBiAYBkAYI&amp;sclient=gws-wiz-serp#rlimm=6303144761789413895">Address:<br>Đ.Đồng
+                    Khởi, P, Quận 1, TP Hồ Chí Minh</a><a href="tel:0900090211">Phone number: 0900090211</a></address>
+        </article>
+        <article>
+            <p>Ha Noi branch</p>
+            <address><a
+                    href="https://www.google.com/search?q=restaurant+viet+nam+address+hanoi&amp;rlz=1C1ONGR_enVN979VN979&amp;oq=restaurant+viet+nam+address+hanoi&amp;gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKAB0gEIMzQxMmowajSoAgCwAgA&amp;sourceid=chrome&amp;ie=UTF-8#rlimm=4668035241847581460">Address:<br>75
+                    P.Nguyễn Đình Chiểu, Lê Đại Hành, Hai Bà Trưng, Hà Nội</a><a href="tel:0900090212">Phone number:
+                    0900090212</a></address>
+        </article>
+        <a href="#" id="pageup_btn">^</a>
+    </section>
+
 
     <script src="index.js"></script>
     <script src="detail.js"></script>

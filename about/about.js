@@ -785,10 +785,6 @@ bookAParty_btn.addEventListener("click", function(){
 })
 
 
-
-
-
-
 //Render the footer of html page
     let footerTitle = document.createElement("p")
     footerTitle.textContent = "Old Man Restaurant"
