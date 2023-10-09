@@ -1,3 +1,6 @@
+let cartItemsArray = Object.values(JSON.parse(localStorage.getItem('productsInCart')) || []);
+console.log(cartItemsArray);
+
 let products = [
     {
         id: 1,

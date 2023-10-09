@@ -179,8 +179,6 @@ function removeProduct(itemId) {
 }
 
 
-
-
 // GO TO CHECKOUT PAGE
 function goToCheckout() {
     
