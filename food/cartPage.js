@@ -1,3 +1,4 @@
+let cartItemsArray = Object.values(JSON.parse(localStorage.getItem('productsInCart')) || []);
 
 //RENDER BUILD CART
 
@@ -178,12 +179,13 @@ function removeProduct(itemId) {
 }
 
 
+
+
 // GO TO CHECKOUT PAGE
 function goToCheckout() {
-    let cartItemsArray = JSON.parse(localStorage.getItem('productsInCart')) || [];
     
     // Update the cartItemsArray in localStorage
-    localStorage.setItem('productsInCart', JSON.stringify(cartItemsArray));
+    localStorage.setItem('payment', JSON.stringify(cartItemsArray));
     
     // Redirect to the checkout page (you can replace 'checkout.html' with your actual checkout page URL)
     window.location.href = 'checkout.html';
