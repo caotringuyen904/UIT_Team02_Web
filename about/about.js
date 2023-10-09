@@ -1,13 +1,4 @@
 
-<<<<<<< HEAD
-let story = document.getElementById("story_holder");
-
-function show_story() {
-    story.setAttribute("style", "display: ;");
-    document.getElementById("story_holder").innerHTML = story;
-    console.log(story);
-}
-=======
 //Initialize Button object
 const ourStory_btn = document.getElementById("ourstory_btn")
 const promotionNew_btn = document.getElementById("promotionnew_btn")
