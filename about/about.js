@@ -116,6 +116,7 @@ promotionNew_btn.addEventListener("click", function(){
     careerHolder.innerHTML = ""
     storyHolder.innerHTML = ""
     partyHolder.innerHTML = ""
+    let promotionToCart =[]
     for(let i in promotions){
         //generate a container for promotion
         let promotionBox = document.createElement("section")
@@ -158,13 +159,40 @@ promotionNew_btn.addEventListener("click", function(){
             promotionQuantity.textContent = promotions[i].inCart
         })
         //generate add to cart button of promotion food
+        
         let addToCart = document.createElement("button")
         addToCart.textContent = "Add To Cart"
         addToCart.setAttribute("id", "addtocart_btn")
         addToCart.addEventListener("click", function(){
-            let temp = promotions[i]
-            localStorage.setItem(JSON.stringify(promotions[i].id),JSON.stringify(promotions[i]))
-            alert("Sucessfully add to cart this item")
+            if(promotions[i].inCart == 0){
+                if(promotionToCart.includes(promotions[i])){
+                    for(let j in promotionToCart){
+                        if(promotionToCart[j]===promotions[i]){
+                            promotionToCart[j].inCart++
+                            promotions[i].inCart = promotionToCart[j].inCart
+                            promotionQuantity.textContent = promotions[i].inCart
+                        }
+                    }
+                }else{
+                    promotions[i].inCart++
+                    promotionToCart.push(promotions[i])
+                    promotionQuantity.textContent = promotions[i].inCart
+                }   
+            }else{
+                if(promotionToCart.includes(promotions[i])){
+                    for(let j in promotionToCart){
+                        if(promotionToCart[j]===promotions[i]){
+                            
+                            promotionToCart[j].inCart = promotions[i].inCart
+                            promotionQuantity.textContent = promotions[i].inCart
+                        }
+                    }
+                }else{
+                    promotionToCart.push(promotions[i])
+                }
+            }
+          
+            localStorage.setItem("promotion",JSON.stringify(promotionToCart))
         })
         //add all the component of promotion box into the box
         promotionBox.appendChild(promotionName)
@@ -413,6 +441,7 @@ bookAParty_btn.addEventListener("click", function(){
 
     //Function generate option
     function generateMonthOptions (month_Booking){
+        monthBooking.innerHTML ="";
         for(let i=1; i<13; i++){
             let monthOption =document.createElement("option")
             monthOption.setAttribute("value", i)
@@ -421,6 +450,7 @@ bookAParty_btn.addEventListener("click", function(){
         }
     }
     function generateDayOptions (day_Booking, limit){
+        dayBooking.innerHTML=""
         for(let i=1; i<limit+1; i++){
             let dayOption =document.createElement("option")
             dayOption.setAttribute("value", i)
