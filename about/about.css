@@ -16,7 +16,7 @@ main{
 }
 /*Intro styling */
 .fading_filter{
-    background-image: url(/UIT_Team02_Web//about/Info_img/Intro_background-612x612.jpg);
+    background-image: url(/about/Info_img/Intro_background-612x612.jpg);
 }
 .intro p {
     font-size: 5rem;

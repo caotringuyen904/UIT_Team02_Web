@@ -126,7 +126,7 @@ header .navbar a:hover {
   gap: 1.5 rem;
   min-height: 100vh;
   align-items: center;
-  background: url(/UIT_Team02_Web/about/Info_img/Intro_background-612x612.jpg) no-repeat;
+  background: url(/about/Info_img/Intro_background-612x612.jpg) no-repeat;
   background-size: cover;
   background-position: center
 }
@@ -212,7 +212,8 @@ header .navbar span {
   gap: 1.5rem;
   justify-content: center;
   margin: 10px;
-  background: url(/UIT_Team02_Web/about/Info_img/Intro_background-612x612.jpg) no-repeat;
+  background: url(/about/Info_img/Intro_background-612x612.jpg);
+  background-repeat: repeat;
   background-size: cover;
   background-position: center
 }
@@ -430,7 +431,7 @@ header .navbar span {
 /* STYLE DETAIL PAGE */
 .detail-container {
   margin: auto;
-  background-image: url(/UIT_Team02_Web/food/images/bgSearch.jpg);
+  background-image: url(/food/images/bgSearch.jpg);
   margin-bottom: 16px;
 }
 
@@ -471,7 +472,7 @@ header .navbar span {
 
 .wapper-buttonFilter {
   /* Set the background image */
-  background-image: url(/UIT_Team02_Web/food/images/bgSearch.jpg);
+  background-image: url(/food/images/bgSearch.jpg);
   /* Set the size and other styles as needed */
   width: 100%;
   height: 100%;
@@ -480,7 +481,7 @@ header .navbar span {
 
 .bgCartPage {
   /* Set the background image */
-  background-image: url(/UIT_Team02_Web/food/images/home-bg.jpg);
+  background-image: url(/food/images/home-bg.jpg);
   /* Set the size and other styles as needed */
   width: 100%;
   height: 100%;
@@ -489,7 +490,7 @@ header .navbar span {
 
 #productList, .form-container{
 
-  background-image: url(/UIT_Team02_Web/food/images/home-bg.jpg);
+  background-image: url(/food/images/home-bg.jpg);
   /* Set the size and other styles as needed */
   width: 100%;
   height: 100%;
