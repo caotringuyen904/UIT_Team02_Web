@@ -1,20 +1,19 @@
 "use strict";
 
 const paymentMethodBtns = document.querySelectorAll(".method");
-const payAmountBtn = document.getElementById("payAmount");
-const decrementBtn = document.querySelectorAll("#decrement");
-const quantityElm = document.querySelectorAll("#quantity");
-const incrementBtn = document.querySelectorAll("#increment");
-const priceElm = document.querySelectorAll("#price");
+const payAmountElm = document.getElementById("payAmount");
+const payAmountBtn = document.getElementById("pay-button");
 const subtotalElm = document.querySelector("#subtotal");
 const taxElm = document.querySelector("#tax");
 const totalElm = document.querySelector("#total");
+let decrementBtn = null;
+let incrementBtn = null;
 
-let focusingMethod = undefined;
+let focusingMethod = null;
 let productList = [
   {
     id: 1,
-    inCart: 0,
+    inCart: 1,
     productImg: "./images/b-grill-beef-speacial.jpeg",
     productTitle: "Beef cheese",
     productPrice: 10,
@@ -24,7 +23,7 @@ let productList = [
   },
   {
     id: 2,
-    inCart: 0,
+    inCart: 2,
     productImg: "./images/b-chicken-grill.jpg",
     productTitle: "Chicken grill hotcool",
     productPrice: 8,
@@ -173,14 +172,15 @@ let productList = [
     type: "DESSERT",
   },
 ];
+const products = JSON.parse(localStorage.getItem("payment"));
 
-let products = JSON.parse(localStorage.getItem("payment"));
-
-const totalCal = function () {
+const totalCal = () => {
   const tax = 0.1;
   let subtotal = 0;
   let totalTax = 0;
   let total = 0;
+  let quantityElm = document.querySelectorAll("#quantity");
+  let priceElm = document.querySelectorAll("#price");
 
   for (let i = 0; i < quantityElm.length; i++) {
     subtotal +=
@@ -192,7 +192,29 @@ const totalCal = function () {
   taxElm.textContent = totalTax.toFixed(2);
   total = subtotal + totalTax + 1;
   totalElm.textContent = total.toFixed(2);
-  payAmountBtn.textContent = total.toFixed(2);
+  payAmountElm.textContent = total.toFixed(2);
+};
+
+const addProductCardBtnEventHandlers = () => {
+  incrementBtn.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      let invoker = e.currentTarget;
+      let increment = Number(invoker.previousElementSibling.textContent);
+      increment++;
+      invoker.previousElementSibling.textContent = increment;
+      totalCal();
+    });
+  });
+
+  decrementBtn.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      let invoker = e.currentTarget;
+      let decrement = Number(invoker.nextElementSibling.textContent);
+      decrement <= 1 ? 1 : decrement--;
+      invoker.nextElementSibling.textContent = decrement;
+      totalCal();
+    });
+  });
 };
 
 const createFormForCredit = () => {
@@ -214,7 +236,7 @@ const createFormForCredit = () => {
   cardNumberDiv.className = "card-number";
   cardNumberDiv.innerHTML = `
     <label for="card-number" class="label-default">Card number</label>
-    <input type="text" name="card-number" id="card-number" class="input-default" />
+    <input type="number" name="card-number" id="card-number" class="input-default"/>
   `;
   form.appendChild(cardNumberDiv);
 
@@ -238,7 +260,7 @@ const createFormForCredit = () => {
   cvvDiv.className = "cvv";
   cvvDiv.innerHTML = `
     <label for="cvv" class="label-default">CVV</label>
-    <input type="number" name="cvv" id="cvv" class="input-default" />
+    <input type="number" name="cvv" id="cvv" class="input-default" required/>
   `;
   inputFlexDiv.appendChild(cvvDiv);
 
@@ -262,8 +284,8 @@ const createFormForDebit = () => {
       <option value="VietcomBank">
       <option value="BIDV">
       <option value="VIB">
-      <option value="Opera">
-      <option value="Safari">
+      <option value="ACB">
+      <option value="Agribank">
     </datalist>
   `;
   form.appendChild(cardholderDiv);
@@ -273,7 +295,7 @@ const createFormForDebit = () => {
   cardNumberDiv.className = "card-number";
   cardNumberDiv.innerHTML = `
     <label for="card-number" class="label-default">Card number</label>
-    <input type="text" name="card-number" id="card-number" class="input-default" />
+    <input type="number" name="card-number" id="card-number" class="input-default" />
   `;
   form.appendChild(cardNumberDiv);
 
@@ -289,7 +311,30 @@ const createFormForDebit = () => {
   return form;
 };
 
-const createForm = (paymentMethodId) => {
+const createDummyQRCode = (momoOrZalo) => {
+  // Create a new div element
+  var containerDiv = document.createElement("div");
+  containerDiv.id = "dynamic-form";
+  containerDiv.style.margin = "auto";
+
+  // Create an image element
+  var imageElement = document.createElement("img");
+  imageElement.src =
+    momoOrZalo === "momo" ? "images\\momo_qr.jpg" : "images\\zalopay_qr.jpg"; // Set the path to your image
+  imageElement.alt = "Description of the image";
+  imageElement.width = 500;
+
+  // Create a label element
+  var labelElement = document.createElement("p");
+  labelElement.textContent = "Scan this QR code with mobile app";
+
+  // Append the image and label elements to the div
+  containerDiv.appendChild(imageElement);
+  containerDiv.appendChild(labelElement);
+  return containerDiv;
+};
+
+const renderForm = (paymentMethodId) => {
   const formContainer = document.getElementById(paymentMethodId);
   let form = undefined;
   switch (paymentMethodId) {
@@ -299,6 +344,12 @@ const createForm = (paymentMethodId) => {
     case "debit-card":
       form = createFormForDebit();
       break;
+    case "zalopay":
+    case "momo":
+      form = createDummyQRCode(paymentMethodId);
+      break;
+    case "paypal":
+      window.open("https://www.paypal.com/signin?locale.x=vi_VN", "_blank");
     default:
       break;
   }
@@ -382,35 +433,19 @@ const renderProductCards = (productList) => {
   productList.forEach((product) =>
     productCart.appendChild(createProductCard(product))
   );
+  decrementBtn = document.querySelectorAll("#decrement");
+  incrementBtn = document.querySelectorAll("#increment");
+  addProductCardBtnEventHandlers();
+  totalCal();
 };
 
 //Function to remove the form
-function removeForm() {
+const removeForm = () => {
   const dynamicForm = document.getElementById("dynamic-form");
   if (dynamicForm) {
     dynamicForm.remove(); // Remove the form if it exists
   }
-}
-
-incrementBtn.forEach((element) => {
-  element.addEventListener("click", (e) => {
-    let invoker = e.currentTarget;
-    let increment = Number(invoker.previousElementSibling.textContent);
-    increment++;
-    invoker.previousElementSibling.textContent = increment;
-    totalCal();
-  });
-});
-
-decrementBtn.forEach((element) => {
-  element.addEventListener("click", (e) => {
-    let invoker = e.currentTarget;
-    let decrement = Number(invoker.nextElementSibling.textContent);
-    decrement <= 1 ? 1 : decrement--;
-    invoker.nextElementSibling.textContent = decrement;
-    totalCal();
-  });
-});
+};
 
 paymentMethodBtns.forEach((element) => {
   element.addEventListener("focus", (e) => {
@@ -439,8 +474,16 @@ paymentMethodBtns.forEach((element) => {
         name="checkmark-circle"
       ></ion-icon>
       `;
-    createForm(invoker.id);
+    renderForm(invoker.id);
   });
+});
+
+payAmountBtn.addEventListener("click", () => {
+  if (focusingMethod) {
+    alert(focusingMethod.id);
+  } else {
+    alert("Select payment method");
+  }
 });
 
 renderProductCards(productList);
