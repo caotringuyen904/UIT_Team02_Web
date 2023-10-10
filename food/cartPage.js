@@ -28,6 +28,7 @@ function displayCart() {
     let productContainer = document.querySelector('.products-container');
     let productTotal = document.querySelector('.product-total')
     let cartCost = localStorage.getItem('totalCost');
+    let btnCheckout = document.querySelector('.btnCheckout');
 
     if (combinedCartArray.length > 0 && productContainer) {
         productContainer.innerHTML = `
@@ -64,6 +65,24 @@ function displayCart() {
          <span>Total cost: &nbsp&nbsp </span>
          <span> ${cartCost}.00$</span>
       </div> `;
+
+        btnCheckout.innerHTML = `
+                        <button style=  "position: absolute; 
+                        top: 75pxpx; 
+                        right: 10px; 
+                        font-size: 38px;
+                        border: 6px solid #6579ff;
+                        border-radius: 1.8rem;
+                        transition: transform .2s;
+                        /* Animation */
+                        background-color: #6579ff;
+                        " 
+    
+                class="btn btn-primary" 
+                onclick="goToCheckout()">Go to checkout
+        </button> `
+
+
     }
 }
 
@@ -147,7 +166,7 @@ function removeProduct(itemId) {
 function goToCheckout() {
     // Update the combinedCartArray in localStorage
     localStorage.setItem('payment', JSON.stringify(combinedCartArray));
-    
+
     // Redirect to the checkout page (you can replace 'checkout.html' with your actual checkout page URL)
     window.location.href = 'checkout.html';
 }
