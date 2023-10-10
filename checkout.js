@@ -249,9 +249,9 @@ const createFormForCredit = () => {
   expireDateDiv.innerHTML = `
     <label for="expire-date" class="label-default">Expiration date</label>
     <div class="input-flex">
-      <input type="number" name="day" id="expire-date" placeholder="31" min="1" max="31" class="input-default" />
+      <input type="number" name="month" id="expire-date" placeholder="month" min="1" max="12" class="input-default" />
       /
-      <input type="number" name="month" id="expire-date" placeholder="12" min="1" max="12" class="input-default" />
+      <input type="number" name="year" id="expire-date" placeholder="year" min="23" max="99" class="input-default" />
     </div>
   `;
   inputFlexDiv.appendChild(expireDateDiv);
@@ -300,10 +300,10 @@ const createFormForDebit = () => {
   form.appendChild(cardNumberDiv);
 
   const ownerName = document.createElement("div");
-  ownerName.className = "debit-name";
+  ownerName.className = "cardholder-name";
   ownerName.innerHTML = `
-    <label for="debit-name" class="label-default">Name on card</label>
-    <input type="text" name="debit-name" id="debit-name" class="input-default" />
+    <label for="debit-name" class="label-default">Cardholder name</label>
+    <input type="text" name="debit-name" id="cardholder-name" class="input-default" />
   `;
 
   form.appendChild(ownerName);
@@ -480,7 +480,45 @@ paymentMethodBtns.forEach((element) => {
 
 payAmountBtn.addEventListener("click", () => {
   if (focusingMethod) {
-    alert(focusingMethod.id);
+    switch (focusingMethod.id) {
+      case "momo":
+      case "zalopay":
+        alert("Finish payment in your mobile app");
+        break;
+      case "credit-card":
+        let cardholderNameCredit =
+          document.getElementById("cardholder-name").value;
+        let cardNumberCredit = document.getElementById("card-number").value;
+        let month = document.getElementsByName("month")[0].value;
+        let year = document.getElementsByName("year")[0].value;
+        let cvv = document.getElementById("cvv").value;
+
+        alert(
+          ` 
+          Selected method: ${focusingMethod.id}
+          - Cardholder name: ${cardholderNameCredit || "Empty"}
+          - Card number: ${cardNumberCredit || NaN} 
+          - Expire date: ${month || NaN} // ${year || NaN}
+          - CVV: ${cvv || NaN}
+        `
+        );
+        break;
+      case "debit-card":
+        let cardholderNameDebit =
+          document.getElementById("cardholder-name").value;
+        let cardNumberDebit = document.getElementById("card-number").value;
+        let bankName = document.getElementsByName("bank-name")[0].value;
+
+        alert(
+          ` 
+          Selected method: ${focusingMethod.id}
+          - Cardholder name: ${cardholderNameDebit || "Empty"}
+          - Card number: ${cardNumberDebit || NaN} 
+          - Bank name: ${bankName || NaN}
+          `
+        );
+        break;
+    }
   } else {
     alert("Select payment method");
   }
