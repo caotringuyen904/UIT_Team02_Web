@@ -7,58 +7,8 @@ html{
 *{
     scroll-behavior: smooth;
 }
-Code header of Tri
-*/
-#bgColorHeader{
-    display: flex;
-}
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 3%;
-    height: 5.5rem;
-  }
 
-  header .logo{
-    font-size: 2.8rem;
-    font-weight: bolder;
-    color:#666;
-  }
   
-  header .logo.logoonggia img{
-    padding-right: .5rem;
-    color:var(--red);
-    width: 100px;
-    border-radius: 50%;
-  }
-  
-  header .navbar a{
-    font-size: 2.5rem;
-    margin-left: 4rem;
-    color: #666;
-    text-shadow:none;
-    
-  }
-  
-  header .navbar a:hover{
-    color:red;
-  }
-  
-  #menu-bar{
-    font-size: 3rem;
-    cursor: pointer;
-    color: #666;
-    border: 0.1rem solid #666;
-    border-radius: 0.3rem;
-    padding: 0.5rem 1.5rem;
-    display: none;
-  }  
 
 
 /*Global nowrap*/
@@ -66,7 +16,7 @@ header {
     text-wrap: nowrap;
 }
 main{
-    margin-top: 160px;
+    margin-top: 100px;
 }
 /*Intro styling */
 .fading_filter{
@@ -204,6 +154,7 @@ Design for Promotion news
     border-radius: 50%;
     background-color: green;
     border: 1px solid black;
+    
 }
 #promotionholder section #ics_btn:hover{
     background-color: rgb(0, 128, 0,0.5);
@@ -219,10 +170,19 @@ Design for Promotion news
 #promotionholder section #addtocart_btn:hover{
     background-color: rgb(255, 0, 0, 0.8);
 }
-
+#partyholder{
+    background-image: url(/about/Info_img/chicken-background-1300x1390.png);
+    padding: 2rem;
+    margin-top: -30px;
+}
 /*
 Styling the Career
 */
+#careerholder{
+    background-image: url(/about/Info_img/chicken-background-1300x1390.png);
+    padding: 2rem;
+    margin-top: -30px;
+}
 #rescruitform{
 
     display:flex;
@@ -378,6 +338,7 @@ Styling the footer
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     background-color: rgb(0, 0, 0, 0.3);
+    margin-left: 50px;
 }
 #pageup_btn:hover{
     color:white;
@@ -403,6 +364,9 @@ media query
         padding: 0;
         max-width: 100vw;
         min-height: 100vh;
+    }
+    main{
+        margin-top: 0;
     }
     .intro{
        display: flex;
@@ -469,6 +433,10 @@ media query
         align-items: normal;
         justify-content: none;
     }
+    /*For the Career*/
+    #careerholder{
+        background-image: url(/about/Info_img/Intro_background-612x612.jpg);
+    }
       /*For the footer*/
     #footer{
         display:flex;
@@ -479,6 +447,9 @@ media query
     }
     #footer p, a{
         font-size: 0.8rem;
+    }
+    #pageup_btn{
+        margin-left: 0px;
     }
 }
 
@@ -516,6 +487,9 @@ media query
         width: 700px;
         height:fit-content;
     }
+    p, label, option, select{
+        font-size: 0.8rem;
+    }
     #footer #footer_title{
         font-size: 1rem;  
         margin: 5px;
@@ -523,5 +497,6 @@ media query
     #footer p, a{
         font-size: 0.8rem;
     }
+   
   
 }
