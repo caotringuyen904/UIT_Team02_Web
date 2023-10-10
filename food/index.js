@@ -1,3 +1,4 @@
+
 let products = [
     {
         id: 1,
@@ -65,7 +66,7 @@ let products = [
     {
         id: 8,
         inCart: 0,
-        productImg: "./images/f-chicken-combo.png",
+        productImg: "./images/f-chicken-cbx.png",
         productTitle: "Combo happy",
         productPrice: 14,
         productDescription: "Some quick example text to build on the card title and make up the bulk of the card's content.",
@@ -251,7 +252,7 @@ function setItems(product) {
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     console.log("cartItems", cartItems);
-    
+
     if (cartItems != null) {
         if (cartItems[product.productImg] == undefined) {
             cartItems = {
@@ -345,6 +346,7 @@ window.onload = () => {
 }
 
 
+
 const productImages = document.getElementsByClassName('image-container');
 
 for (let i = 0; i < productImages.length; i++) {
@@ -363,7 +365,7 @@ function setProductDetail(product) {
 
     // Store the string in localStorage
     localStorage.setItem('productData', productString);
-    
+
 }
 
 

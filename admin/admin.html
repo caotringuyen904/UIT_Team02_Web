@@ -18,24 +18,31 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="admin.css">
-    
-</head>
+      <link rel="stylesheet" href="/UIT_Team02_Web/food/style.css">
+    <link rel="stylesheet" href="/UIT_Team02_Web/about/about.css">
+  </head>
+  
+  <body>
+     <header id="bgColorHeader">
+      <a href="index.html" class="logo">
+          <img class="logoonggia" width="100px" src="images/logoOngGia.png">
+      </a>
 
-<body>
-    <!-- header section starts  -->
-    <header>
-        <a href="../food/index.html" class="logo">
-            <img class="logoonggia" width="100px" src="../food/images/logoOngGia.png">
-        </a>
+      <div id="menu-bar" class="fas fa-bars fa-times"></div>
 
-        <div id="menu-bar" class="fas fa-bars fa-times"></div>
-     
-        <nav class="navbar">
-            <a href="../food/index.html">Home</a>
-            <a href="../food/index.html">About</a>
-            
-        </nav>
-    </header>
+      <nav class="navbar">
+          <a href="/UIT_Team02_Web/food/index.html">Home</a>
+          <a href="/UIT_Team02_Web/food/detail.html">Detail</a>
+          <a href="/UIT_Team02_Web/about/about.html">About</a>
+
+          <a class="admin-container" href="#default">Admin</a>
+          <a class="cart" href="/UIT_Team02_Web/food/cart.html">
+              <i class="fa fa-shopping-cart" style="font-size:18px">
+                  <span class='badge badge-danger' id='lblCartCount'>0</span></i>
+          </a>
+      </nav>
+      
+  </header>
 
     <div class="form-container">
       <div class="form-auto">
@@ -69,6 +76,24 @@
     <div class="" id="productList"></div>
 
 
+    <section style=" top:auto ;border: none;background-color: rgb(223, 223, 61)" id="footer">
+      <p id="footer_title">Old Man Restaurant</p>
+      <article>
+          <p>Ho Chi Minh branch</p>
+          <address><a
+                  href="https://www.google.com/search?q=restaurant+viet+nam+address&amp;sca_esv=570269325&amp;rlz=1C1ONGR_enVN979VN979&amp;sxsrf=AM9HkKmVtlPva1EE5P-mCSa3v_GEl_qdUA%3A1696317370377&amp;ei=ur8bZavSFqGC2roP96uj2A8&amp;oq=restaurant+viet+nam+add&amp;gs_lp=Egxnd3Mtd2l6LXNlcnAiF3Jlc3RhdXJhbnQgdmlldCBuYW0gYWRkKgIIADIFECEYoAEyBRAhGKABMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIIECEYFhgeGB0yCBAhGBYYHhgdMggQIRgWGB4YHTIKECEYFhgeGA8YHUi9DVBEWKcIcAF4AZABAJgBlgGgAbsEqgEDMC40uAEByAEA-AEBwgIKEAAYRxjWBBiwA8ICBxAAGIAEGArCAgYQABgWGB7CAgIQJsICBBAhGBXiAwQYACBBiAYBkAYI&amp;sclient=gws-wiz-serp#rlimm=6303144761789413895">Address:<br>Đ.Đồng
+                  Khởi, P, Quận 1, TP Hồ Chí Minh</a><a href="tel:0900090211">Phone number: 0900090211</a></address>
+      </article>
+      <article>
+          <p>Ha Noi branch</p>
+          <address><a
+                  href="https://www.google.com/search?q=restaurant+viet+nam+address+hanoi&amp;rlz=1C1ONGR_enVN979VN979&amp;oq=restaurant+viet+nam+address+hanoi&amp;gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKAB0gEIMzQxMmowajSoAgCwAgA&amp;sourceid=chrome&amp;ie=UTF-8#rlimm=4668035241847581460">Address:<br>75
+                  P.Nguyễn Đình Chiểu, Lê Đại Hành, Hai Bà Trưng, Hà Nội</a><a href="tel:0900090212">Phone number:
+                  0900090212</a></address>
+      </article>
+      <a href="#" id="pageup_btn">^</a>
+  </section>
+>>>>>>> main
         <script src="adminPage.js"></script>
 
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

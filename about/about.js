@@ -38,7 +38,7 @@ console.log(story)
 //Initialize Promotion object
 let promotions =[
 {
-    id:"protmotion01",
+    id:1,
     inCart:0,
     productImg:"./Info_img/combo_chicken_500x500.png",
     productTitle: "Chicken Bucket Medium",
@@ -48,7 +48,7 @@ let promotions =[
     type: 'Promotion Fried Chicken'
 },
 {
-    id:"protmotion02",
+    id:2,
     inCart:0,
     productImg:"./Info_img/combo_chicken_2_800x625.png",
     productTitle: "Chicken Disk",
@@ -58,7 +58,7 @@ let promotions =[
     type: 'Promotion Fried Chicken'
 },
 {
-    id:"protmotion03",
+    id:3,
     inCart:0,
     productImg:"./Info_img/combo_chicken_3_466x419.png",
     productTitle: "Chicken Bucket Large",
@@ -785,10 +785,6 @@ bookAParty_btn.addEventListener("click", function(){
 })
 
 
-
-
-
-
 //Render the footer of html page
     let footerTitle = document.createElement("p")
     footerTitle.textContent = "Old Man Restaurant"
@@ -816,4 +812,3 @@ bookAParty_btn.addEventListener("click", function(){
     pageUp_btn.setAttribute("href", "#")
     pageUp_btn.setAttribute("id", "pageup_btn")
     footerHolder.appendChild(pageUp_btn)
-
