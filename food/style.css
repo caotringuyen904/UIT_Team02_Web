@@ -101,6 +101,7 @@ header .navbar a:hover {
   display: none;
 }
 
+
 /* style input search */
 
 .input-group {
@@ -304,9 +305,17 @@ header .navbar span {
 
 
 /* style search input  */
+
+
 #wrapper {
   width: 95%;
   margin: 0 auto;
+}
+.funcSearchFilter {
+  background-image: #fff;
+  background-size: cover; /* Adjust as needed */
+  background-repeat: no-repeat; /* Adjust as needed */
+  background-position: center center; /* Adjust as needed */
 }
 
 #search-container {
@@ -315,11 +324,13 @@ header .navbar span {
 
 }
 
+
 ::placeholder {
   color: #333;
   opacity: 1;
   /* Firefox */
 }
+
 
 #search-container input {
   background-color: transparent;
@@ -327,7 +338,6 @@ header .navbar span {
   border-bottom: 2px solid var(--red);
   padding: 1em 0.3em;
   font-size: 20px;
-
 }
 
 #search-container input:focus {
@@ -430,16 +440,19 @@ header .navbar span {
 
 /* STYLE DETAIL PAGE */
 .detail-container {
+   margin-top: 18rem;
+  margin-left: 18rem;
+}
+#product-image {
   margin: auto;
   background-image: url(/food/images/bgSearch.jpg);
   margin-bottom: 16px;
-}
-
-#product-image {
-  margin-top: 100px;
-  width: 400px;
+    margin-top: 100px;
+   width: 400px;
   height: 400px;
 }
+
+
 
 #product-name {
   margin-top: 2rem;
@@ -448,9 +461,7 @@ header .navbar span {
 
 #product-description,
 #product-price {
-  font-size: 20px;
-  font-weight: bold;
-  
+  font-size: large;
 }
 
 .detail-container button {
@@ -461,6 +472,7 @@ header .navbar span {
   transition: transform .2s;
   /* Animation */
   background-color: #6579ff;
+    font-weight: bold;
 }
 
 
@@ -468,7 +480,6 @@ header .navbar span {
   background-color: #dc3545;
   transform: scale(1.1);
 }
-
 
 .wapper-buttonFilter {
   /* Set the background image */
@@ -495,4 +506,5 @@ header .navbar span {
   width: 100%;
   height: 100%;
   position: relative;
+
 }

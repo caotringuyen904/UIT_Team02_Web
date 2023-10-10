@@ -1,4 +1,5 @@
 let cartItemsArray = Object.values(JSON.parse(localStorage.getItem('productsInCart')) || []);
+
 console.log(cartItemsArray);
 
 
@@ -9,6 +10,7 @@ console.log(cartPromotionArray);
 let combinedCartArray = [...cartItemsArray, ...cartPromotionArray];
 console.log(combinedCartArray);
 
+>>>>>>> main
 
 //RENDER BUILD CART
 
@@ -28,6 +30,7 @@ function displayCart() {
     let productContainer = document.querySelector('.products-container');
     let productTotal = document.querySelector('.product-total')
     let cartCost = localStorage.getItem('totalCost');
+
     let btnCheckout = document.querySelector('.btnCheckout');
 
     if (combinedCartArray.length > 0 && productContainer) {
@@ -58,10 +61,12 @@ function displayCart() {
             <span class="col">${product.inCart * product.productPrice}.00$</span>
         </div>
         `;
+>>>>>>> main
         })
 
         productTotal.innerHTML = `
       <div class="product-total">
+
          <span>Total cost: &nbsp&nbsp </span>
          <span> ${cartCost}.00$</span>
       </div> `;
@@ -83,12 +88,14 @@ function displayCart() {
         </button> `
 
 
+
     }
 }
 
 displayCart();
 
 function changeQuantity(itemName, operation) {
+
     const index = combinedCartArray.findIndex(item => item.productTitle === itemName);
 
     if (index !== -1) {
@@ -120,11 +127,13 @@ function changeQuantity(itemName, operation) {
     } else {
         console.log('Item not found in the array');
     }
+>>>>>>> main
 }
 
 // remove product in cart
 
 function removeProduct(itemId) {
+
     const index = combinedCartArray.findIndex(item => item.id === itemId);
     console.log(index);
 
@@ -166,6 +175,7 @@ function removeProduct(itemId) {
 function goToCheckout() {
     // Update the combinedCartArray in localStorage
     localStorage.setItem('payment', JSON.stringify(combinedCartArray));
+
 
     // Redirect to the checkout page (you can replace 'checkout.html' with your actual checkout page URL)
     window.location.href = 'checkout.html';

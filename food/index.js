@@ -1,3 +1,4 @@
+
 let products = [
     {
         id: 1,
@@ -251,7 +252,7 @@ function setItems(product) {
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     console.log("cartItems", cartItems);
-    
+
     if (cartItems != null) {
         if (cartItems[product.productImg] == undefined) {
             cartItems = {
@@ -345,6 +346,7 @@ window.onload = () => {
 }
 
 
+
 const productImages = document.getElementsByClassName('image-container');
 
 for (let i = 0; i < productImages.length; i++) {
@@ -363,7 +365,7 @@ function setProductDetail(product) {
 
     // Store the string in localStorage
     localStorage.setItem('productData', productString);
-    
+
 }
 
 
