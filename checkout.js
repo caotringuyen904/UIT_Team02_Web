@@ -3,6 +3,7 @@
 const paymentMethodBtns = document.querySelectorAll(".method");
 const payAmountElm = document.getElementById("payAmount");
 const payAmountBtn = document.getElementById("pay-button");
+const homeBtn = document.querySelector(".home");
 const subtotalElm = document.querySelector("#subtotal");
 const taxElm = document.querySelector("#tax");
 const totalElm = document.querySelector("#total");
@@ -524,4 +525,8 @@ payAmountBtn.addEventListener("click", () => {
   }
 });
 
-renderProductCards(productList);
+homeBtn.addEventListener("click", () => {
+  window.location.href = "index.html";
+});
+
+renderProductCards(products || productList);

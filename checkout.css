@@ -112,6 +112,11 @@ input::-webkit-outer-spin-button {
   font-size: 40px;
 }
 
+.heading button {
+  margin-left: auto;
+  color: var(--onyx);
+}
+
 .item-flex {
   display: flex;
   flex-grow: 1;
