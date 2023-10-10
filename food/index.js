@@ -1,5 +1,3 @@
-let cartItemsArray = Object.values(JSON.parse(localStorage.getItem('productsInCart')) || []);
-console.log(cartItemsArray);
 
 let products = [
     {
@@ -68,7 +66,7 @@ let products = [
     {
         id: 8,
         inCart: 0,
-        productImg: "./images/f-chicken-combo.png",
+        productImg: "./images/f-chicken-cbx.png",
         productTitle: "Combo happy",
         productPrice: 14,
         productDescription: "Some quick example text to build on the card title and make up the bulk of the card's content.",
@@ -349,7 +347,6 @@ window.onload = () => {
 
 
 
-// render detail page
 const productImages = document.getElementsByClassName('image-container');
 
 for (let i = 0; i < productImages.length; i++) {
