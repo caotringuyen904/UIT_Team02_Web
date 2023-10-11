@@ -77,6 +77,8 @@ header .navbar a{
   font-size: 2.5rem;
   margin-left: 4rem;
   color: #666;
+  text-shadow: none;
+  text-decoration: none;
 }
 
 header .navbar a:hover{
