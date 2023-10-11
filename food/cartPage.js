@@ -4,7 +4,11 @@ console.log(cartItemsArray);
 
 
 let cartPromotionArray = JSON.parse(localStorage.getItem('promotion'));
+
+if(cartPromotionArray==null)cartPromotionArray = []
 console.log(cartPromotionArray);
+
+
 
 // Alternatively, you can use the spread operator:
 let combinedCartArray = [...cartItemsArray, ...cartPromotionArray];
