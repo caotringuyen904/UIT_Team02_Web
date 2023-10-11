@@ -2,7 +2,7 @@
 
 const paymentMethodBtns = document.querySelectorAll(".method");
 const payAmountElm = document.getElementById("payAmount");
-const payAmountBtn = document.getElementById("pay-button");
+const payBtn = document.getElementById("pay-button");
 const homeBtn = document.querySelector(".home");
 const subtotalElm = document.querySelector("#subtotal");
 const taxElm = document.querySelector("#tax");
@@ -175,6 +175,7 @@ let productList = [
 ];
 const products = JSON.parse(localStorage.getItem("payment"));
 
+//Calculate total price
 const totalCal = () => {
   const tax = 0.1;
   let subtotal = 0;
@@ -196,6 +197,7 @@ const totalCal = () => {
   payAmountElm.textContent = total.toFixed(2);
 };
 
+//Add event handlers for increment and decrement buttons on product card
 const addProductCardBtnEventHandlers = () => {
   incrementBtn.forEach((element) => {
     element.addEventListener("click", (e) => {
@@ -218,6 +220,7 @@ const addProductCardBtnEventHandlers = () => {
   });
 };
 
+//Create form element for Credit-card payment method
 const createFormForCredit = () => {
   const form = document.createElement("form");
   form.action = "#";
@@ -270,6 +273,7 @@ const createFormForCredit = () => {
   return form;
 };
 
+//Create form element for Debit-card payment method
 const createFormForDebit = () => {
   const form = document.createElement("form");
   form.action = "#";
@@ -312,6 +316,7 @@ const createFormForDebit = () => {
   return form;
 };
 
+//Create dummy QR code element for Momo/Zalo payment method
 const createDummyQRCode = (momoOrZalo) => {
   // Create a new div element
   var containerDiv = document.createElement("div");
@@ -335,6 +340,7 @@ const createDummyQRCode = (momoOrZalo) => {
   return containerDiv;
 };
 
+//Render form/dummyQR code
 const renderForm = (paymentMethodId) => {
   const formContainer = document.getElementById(paymentMethodId);
   let form = undefined;
@@ -360,7 +366,7 @@ const renderForm = (paymentMethodId) => {
   }
 };
 
-// Create a function to create product card dynamically
+// Create a product card dynamically
 const createProductCard = (product) => {
   const productCardDiv = document.createElement("div");
   productCardDiv.className = "product-card";
@@ -449,7 +455,7 @@ const removeForm = () => {
 };
 
 paymentMethodBtns.forEach((element) => {
-  element.addEventListener("focus", (e) => {
+  element.addEventListener("click", (e) => {
     if (focusingMethod === e.currentTarget) return;
     else focusingMethod = e.currentTarget;
 
@@ -479,7 +485,7 @@ paymentMethodBtns.forEach((element) => {
   });
 });
 
-payAmountBtn.addEventListener("click", () => {
+payBtn.addEventListener("click", () => {
   if (focusingMethod) {
     switch (focusingMethod.id) {
       case "momo":
