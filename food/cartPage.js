@@ -4,13 +4,15 @@ console.log(cartItemsArray);
 
 
 let cartPromotionArray = JSON.parse(localStorage.getItem('promotion'));
+
+if(cartPromotionArray==null)cartPromotionArray = []
 console.log(cartPromotionArray);
+
+
 
 // Alternatively, you can use the spread operator:
 let combinedCartArray = [...cartItemsArray, ...cartPromotionArray];
 console.log(combinedCartArray);
-
->>>>>>> main
 
 //RENDER BUILD CART
 
@@ -23,15 +25,11 @@ function onLoadCartNumbers() {
 onLoadCartNumbers();
 
 function displayCart() {
-    let cartItems = localStorage.getItem('productsInCart');
-    cartItems = JSON.parse(cartItems);
-    console.log(cartItems);
-
     let productContainer = document.querySelector('.products-container');
     let productTotal = document.querySelector('.product-total')
     let cartCost = localStorage.getItem('totalCost');
 
-    let btnCheckout = document.querySelector('.btnCheckout');
+    let btnCheckout = document.querySelector('.checkOut');
 
     if (combinedCartArray.length > 0 && productContainer) {
         productContainer.innerHTML = `
@@ -61,7 +59,6 @@ function displayCart() {
             <span class="col">${product.inCart * product.productPrice}.00$</span>
         </div>
         `;
->>>>>>> main
         })
 
         productTotal.innerHTML = `
@@ -71,23 +68,13 @@ function displayCart() {
          <span> ${cartCost}.00$</span>
       </div> `;
 
-        btnCheckout.innerHTML = `
-                        <button style=  "position: absolute; 
-                        top: 75pxpx; 
-                        right: 10px; 
-                        font-size: 38px;
-                        border: 6px solid #6579ff;
-                        border-radius: 1.8rem;
-                        transition: transform .2s;
-                        /* Animation */
-                        background-color: #6579ff;
-                        " 
-    
-                class="btn btn-primary" 
-                onclick="goToCheckout()">Go to checkout
+      btnCheckout.innerHTML = `
+        <button class="btn btn-primary custom-button" onclick="goToCheckout()">
+                Go to checkout
         </button> `
-
-
+                       
+                
+        
 
     }
 }
@@ -127,7 +114,6 @@ function changeQuantity(itemName, operation) {
     } else {
         console.log('Item not found in the array');
     }
->>>>>>> main
 }
 
 // remove product in cart

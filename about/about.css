@@ -7,10 +7,51 @@ html{
 *{
     scroll-behavior: smooth;
 }
+Code header of Tri
+*/
+#bgColorHeader{
+    display: flex;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3%;
+    height: 6.8rem;
+  }
+
+  header .logo{
+    font-size: 3rem;
+    font-weight: bolder;
+    color:#666;
+  }
+  
+  header .logo.logoonggia img{
+    padding-right: .1rem;
+    color:var(--red);
+    width: 100px;
+    border-radius: 50%;
+  }
+  
+  header .navbar a{
+    font-size: 2rem;
+    margin-left: 4rem;
+    color: #666;
+    text-shadow:none;
+    text-decoration: none;
+    
+  }
+  
+  header .navbar a:hover{
+    color:red;
+  }
 
   
-
-
 /*Global nowrap*/
 .nowrap{
     text-wrap: nowrap;
