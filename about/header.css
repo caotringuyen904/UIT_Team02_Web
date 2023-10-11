@@ -1,0 +1,63 @@
+header {
+    position: fixed;
+    margin-top: -100px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(223, 223, 61);
+    height: 100px;
+  }
+
+  header .logo{
+    color:#666;
+    width: 100px;
+    border-radius: 50%;
+    height:fit-content;
+    flex-grow: 2;
+    text-align: left;
+    margin-left: 40px;
+  }
+  
+
+  
+  header .navbar a{
+    font-size: 1.5rem;
+    margin-right: 2rem;
+    color: #666;
+    text-shadow:none;
+    text-decoration: none;   
+  }
+
+  header .navbar a:hover{
+    color:red;
+  }
+
+  @media screen and (max-width: 516px){
+    header{
+        flex-direction: column;
+        height: fit-content;
+        position:static;
+        margin-top: 0;
+    }
+    header nav{
+        flex-direction: column;
+        flex-wrap: nowrap;  
+    }
+    header .logo{
+        text-align: center;
+        margin-left: 0;
+      }
+      
+    header .navbar a{
+        font-size: 0.7rem;
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+      }
+  }
+  @media screen and (max-width: 920px){
+    header .navbar a{
+        font-size: 1rem;
+      }
+  }
+ 
