@@ -532,7 +532,7 @@ payBtn.addEventListener("click", () => {
 });
 
 homeBtn.addEventListener("click", () => {
-  window.location.href = "index.html";
+  window.location.href = "/food/index.html";
 });
 
 renderProductCards(products || productList);

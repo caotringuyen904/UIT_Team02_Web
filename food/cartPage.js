@@ -164,5 +164,5 @@ function goToCheckout() {
 
 
     // Redirect to the checkout page (you can replace 'checkout.html' with your actual checkout page URL)
-    window.location.href = 'checkout.html';
+    window.location.href = '/checkout.html';
 }
