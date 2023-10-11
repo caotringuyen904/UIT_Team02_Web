@@ -40,7 +40,7 @@ let promotions =[
 {
     id:1,
     inCart:0,
-    productImg:"./Info_img/combo_chicken_500x500.png",
+    productImg:"/about/Info_img/combo_chicken_500x500.png",
     productTitle: "Chicken Bucket Medium",
     productOldPrice: 40,
     productPrice: 20,
@@ -50,7 +50,7 @@ let promotions =[
 {
     id:2,
     inCart:0,
-    productImg:"./Info_img/combo_chicken_2_800x625.png",
+    productImg:"/about/Info_img/combo_chicken_2_800x625.png",
     productTitle: "Chicken Disk",
     productOldPrice: 20,
     productPrice: 10,
@@ -60,7 +60,7 @@ let promotions =[
 {
     id:3,
     inCart:0,
-    productImg:"./Info_img/combo_chicken_3_466x419.png",
+    productImg:"/about/Info_img/combo_chicken_3_466x419.png",
     productTitle: "Chicken Bucket Large",
     productOldPrice: 50,
     productPrice: 23,

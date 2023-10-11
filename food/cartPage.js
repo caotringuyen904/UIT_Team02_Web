@@ -4,7 +4,11 @@ console.log(cartItemsArray);
 
 
 let cartPromotionArray = JSON.parse(localStorage.getItem('promotion'));
+
+if(cartPromotionArray==null)cartPromotionArray = []
 console.log(cartPromotionArray);
+
+
 
 // Alternatively, you can use the spread operator:
 let combinedCartArray = [...cartItemsArray, ...cartPromotionArray];
@@ -21,10 +25,6 @@ function onLoadCartNumbers() {
 onLoadCartNumbers();
 
 function displayCart() {
-    let cartItems = localStorage.getItem('productsInCart');
-    cartItems = JSON.parse(cartItems);
-    console.log(cartItems);
-
     let productContainer = document.querySelector('.products-container');
     let productTotal = document.querySelector('.product-total')
     let cartCost = localStorage.getItem('totalCost');
