@@ -1,4 +1,3 @@
-
 let products = [
     {
         id: 1,
@@ -146,20 +145,37 @@ let products = [
     },
 ]
 
+// Declare global variables
+let cartItemsArray = Object.values(JSON.parse(localStorage.getItem('productsInCart')));
 
+if (cartItemsArray == null) {
+  cartItemsArray = [];
+}else {
+    // Ensure that cartPromotionArray is an array
+    if (!Array.isArray(cartItemsArray)) {
+        cartItemsArray = [];
+    }
+  }
 
-//render UI all products
-//Innitially display all products
+console.log(cartItemsArray);
 
+let cartPromotionArray = JSON.parse(localStorage.getItem('promotion'));
 
-// box-container
-//             card
-//                 imgCont
-//                         image
-//                 content
-//                         title
-//                         price
-//                         button   
+if (cartPromotionArray == null) {
+  cartPromotionArray = [];
+} else {
+  // Ensure that cartPromotionArray is an array
+  if (!Array.isArray(cartPromotionArray)) {
+    cartPromotionArray = [];
+  }
+}
+
+console.log(cartPromotionArray);
+
+// Use the spread operator destructuring
+let combinedCartArray = [...cartItemsArray, ...cartPromotionArray];
+console.log(combinedCartArray);
+
 
 function renderProduct() {
 
@@ -229,7 +245,6 @@ onLoadCartNumbers();
 
 //upload change value on local web
 function cartNumbers(product) {
-
     let productNumbers = localStorage.getItem('cartNumbers');
     console.log(productNumbers);
     productNumbers = parseInt(productNumbers);
@@ -346,7 +361,7 @@ window.onload = () => {
 }
 
 
-
+// handle click detail page
 const productImages = document.getElementsByClassName('image-container');
 
 for (let i = 0; i < productImages.length; i++) {

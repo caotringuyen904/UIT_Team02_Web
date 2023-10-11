@@ -25,10 +25,6 @@ function onLoadCartNumbers() {
 onLoadCartNumbers();
 
 function displayCart() {
-    let cartItems = localStorage.getItem('productsInCart');
-    cartItems = JSON.parse(cartItems);
-    console.log(cartItems);
-
     let productContainer = document.querySelector('.products-container');
     let productTotal = document.querySelector('.product-total')
     let cartCost = localStorage.getItem('totalCost');
