@@ -65,6 +65,7 @@ header {
 
 #bgColorHeader {
   background-color: rgb(223, 223, 61);
+  
 
 }
 
@@ -101,6 +102,7 @@ header .navbar a:hover {
   display: none;
 }
 
+
 /* style input search */
 
 .input-group {
@@ -126,7 +128,7 @@ header .navbar a:hover {
   gap: 1.5 rem;
   min-height: 100vh;
   align-items: center;
-  background: url(/UIT_Team02_Web/about/Info_img/Intro_background-612x612.jpg) no-repeat;
+  background: url(/about/Info_img/Intro_background-612x612.jpg) no-repeat;
   background-size: cover;
   background-position: center
 }
@@ -212,14 +214,15 @@ header .navbar span {
   gap: 1.5rem;
   justify-content: center;
   margin: 10px;
-  background: url(/UIT_Team02_Web/about/Info_img/Intro_background-612x612.jpg) no-repeat;
+  background: url(/about/Info_img/Intro_background-612x612.jpg);
+  background-repeat: repeat;
   background-size: cover;
   background-position: center
 }
 
 
 .box-container .box {
-  flex: 1 1 1;
+  flex: 1 1 1 ;
   position: relative;
   overflow: hidden;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
@@ -230,8 +233,8 @@ header .navbar span {
 }
 
 .box-container .box img {
-  height: 350px;
-  width: 350px;
+  height: 250px;
+  width: 250px;
   object-fit: cover;
   top: -100%;
 }
@@ -240,23 +243,29 @@ header .navbar span {
   background: #fff;
   padding: 2rem;
   text-align: center;
+  object-fit: cover;
+  width: 250px;
+  height: 200px;
+
+
 }
 
 
 .box-container .box .content-container h3 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #333;
 
 }
 
 .box-container .box .content-container h4 {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #666;
   padding: 1rem 0;
 }
 
 .box-container .box:hover .image {
   top: 0;
+ 
 }
 
 .hide {
@@ -303,9 +312,17 @@ header .navbar span {
 
 
 /* style search input  */
+
+
 #wrapper {
   width: 95%;
   margin: 0 auto;
+}
+.funcSearchFilter {
+  background-image: #fff;
+  background-size: cover; /* Adjust as needed */
+  background-repeat: no-repeat; /* Adjust as needed */
+  background-position: center center; /* Adjust as needed */
 }
 
 #search-container {
@@ -314,11 +331,13 @@ header .navbar span {
 
 }
 
+
 ::placeholder {
   color: #333;
   opacity: 1;
   /* Firefox */
 }
+
 
 #search-container input {
   background-color: transparent;
@@ -326,7 +345,6 @@ header .navbar span {
   border-bottom: 2px solid var(--red);
   padding: 1em 0.3em;
   font-size: 20px;
-
 }
 
 #search-container input:focus {
@@ -368,11 +386,11 @@ header .navbar span {
 }
 
 .products-container {
-  margin-top: 98px;
+  margin-top: 0;
   margin-bottom: 0;
-  width: 88%;
+  width: 100%;
   float: center;
-  font-size: large;
+  font-size: 20px;
 
 }
 
@@ -388,7 +406,7 @@ header .navbar span {
 }
 
 .product {
-  margin-left: 11%;
+  margin-left: 0;
   margin-bottom: 0;
   width: 98%;
   font-size: large;
@@ -400,14 +418,13 @@ header .navbar span {
 }
 
 .product-total {
-  width: 98%;
+  width: 100%;
   font-size: large;
   font-weight: bolder;
   float: right;
   margin-left: 66%;
   display: flex;
-  margin-bottom: 10%;
-
+  margin-bottom: 2%;
 }
 
 .col {
@@ -429,16 +446,19 @@ header .navbar span {
 
 /* STYLE DETAIL PAGE */
 .detail-container {
-  margin: auto;
-  background-image: url(/UIT_Team02_Web/food/images/bgSearch.jpg);
-  margin-bottom: 16px;
-}
+ 
+  background-image: url(./images/bgSearch.jpg);
 
+}
 #product-image {
-  margin-top: 100px;
+  margin: auto;
+  margin-bottom: 16px;
+  margin-top: 80px;
   width: 400px;
   height: 400px;
 }
+
+
 
 #product-name {
   margin-top: 2rem;
@@ -447,19 +467,18 @@ header .navbar span {
 
 #product-description,
 #product-price {
-  font-size: 20px;
-  font-weight: bold;
-  
+  font-size: large;
 }
 
 .detail-container button {
   font-size: 20px;
   border: none;
   border-radius: .8rem;
-  margin: .2rem .8rem auto auto;
+  margin: .2rem .8rem 2rem auto;
   transition: transform .2s;
   /* Animation */
   background-color: #6579ff;
+    font-weight: bold;
 }
 
 
@@ -468,10 +487,9 @@ header .navbar span {
   transform: scale(1.1);
 }
 
-
 .wapper-buttonFilter {
   /* Set the background image */
-  background-image: url(/UIT_Team02_Web/food/images/bgSearch.jpg);
+  background-image: url(/food/images/bgSearch.jpg);
   /* Set the size and other styles as needed */
   width: 100%;
   height: 100%;
@@ -480,7 +498,7 @@ header .navbar span {
 
 .bgCartPage {
   /* Set the background image */
-  background-image: url(/UIT_Team02_Web/food/images/home-bg.jpg);
+  background-image: url(/food/images/home-bg.jpg);
   /* Set the size and other styles as needed */
   width: 100%;
   height: 100%;
@@ -488,10 +506,63 @@ header .navbar span {
 }
 
 #productList, .form-container{
-
-  background-image: url(/UIT_Team02_Web/food/images/home-bg.jpg);
+  background-image: url(/food/images/home-bg.jpg);
   /* Set the size and other styles as needed */
   width: 100%;
   height: 100%;
   position: relative;
+
 }
+
+
+#footer{
+  margin-top: 0;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  border: 1px solid red;
+  background-color: rgb(255, 50, 50);
+  border-radius: 2rem;
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+
+}
+#footer address{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#footer p, a{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-left: 5px;
+  text-align: center;
+  font-size: 1rem;
+  text-decoration: none;
+  font-style: normal;
+  color: whitesmoke;
+}
+#footer address p:hover, a:hover{
+ color:rgb(0, 0, 0, 0.5);
+}
+#pageup_btn{
+  width: 35px;
+  text-align: center;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgb(0, 0, 0, 0.3);
+}
+#pageup_btn:hover{
+  color:white;
+  background-color: rgb(0, 0, 0, 0.7);
+}
+#footer #footer_title{
+  text-transform:uppercase;
+  font-size: 1.5rem;
+  text-shadow: 5px 5px 7px black;  
+  color:whitesmoke;
+}
+

@@ -15,19 +15,19 @@ const partyHolder = document.getElementById("partyholder")
 //Initialize story object
 const story = [
 {
-    story_img:"/UIT_Team02_Web/about/Info_img/story_chicken_1_500x500.png",
+    story_img:"/about/Info_img/story_chicken_1_500x500.png",
     story_content:"Once upon a time, there was an old man call The Oldman who had a dream of opening his own fried chicken restaurant. He had always loved fried chicken, and he believed that he could make the best fried chicken in the world. The Oldman worked hard to save up enough money to open his restaurant. He also spent years perfecting his fried chicken recipe. She experimented with different flours, seasonings, and cooking methods until he finally found the perfect combination.When The Oldman finally opened his restaurant, he called it The Oldman he was excited to share his delicious fried chicken with the world"
 },
 {
-    story_img:"/UIT_Team02_Web/about/Info_img/story_chicken_2_743x570.png",
+    story_img:"/about/Info_img/story_chicken_2_743x570.png",
     story_content:"The Oldman Fried Chicken was a hit from the start. People loved his crispy, juicy chicken and his flavorful seasonings. The Oldman's restaurant quickly became a popular spot for locals and tourists alike. The Oldman was passionate about his food and his customers. He loved interacting with his customers and hearing their feedback. He was also always looking for ways to improve his menu and his restaurant. One day, The Oldman decided to enter his fried chicken in a local cooking contest. He was up against some of the best chefs in the city, but He was confident in his recipe. The Oldman's fried chicken won the contest! his chicken was praised by the judges for its flavor, texture, and presentation"
 },
 {
-    story_img:"/UIT_Team02_Web/about/Info_img/story_chicken_3_500x500.png",
+    story_img:"/about/Info_img/story_chicken_3_500x500.png",
     story_content:"After The Old man won the cooking contest, her restaurant became even more popular. People from all over the country came to try her fried chicken. The Old man even started receiving offers from investors who wanted to help her expand her business. The Old man was proud of what she had accomplished. She had started out with a small dream, and she had turned it into a successful business. She was also grateful for the support of her customers and her team."
 },
 {
-    story_img:"/UIT_Team02_Web/about/Info_img/story_chicken_4_461x336.png"
+    story_img:"/about/Info_img/story_chicken_4_461x336.png"
     ,
     story_content:"The Old man's Fried Chicken is now a national chain with restaurants all over the country. The Old man herself is a celebrity chef, and she has appeared on numerous cooking shows and magazines. She is also an inspiration to many young entrepreneurs who dream of starting their own businesses.The Old man's story is a reminder that anything is possible if you have a dream and you're willing to work hard. It's also a reminder that the best food is made with love and passion."
 }
@@ -40,7 +40,7 @@ let promotions =[
 {
     id:1,
     inCart:0,
-    productImg:"./Info_img/combo_chicken_500x500.png",
+    productImg:"/about/Info_img/combo_chicken_500x500.png",
     productTitle: "Chicken Bucket Medium",
     productOldPrice: 40,
     productPrice: 20,
@@ -50,7 +50,7 @@ let promotions =[
 {
     id:2,
     inCart:0,
-    productImg:"./Info_img/combo_chicken_2_800x625.png",
+    productImg:"/about/Info_img/combo_chicken_2_800x625.png",
     productTitle: "Chicken Disk",
     productOldPrice: 20,
     productPrice: 10,
@@ -60,7 +60,7 @@ let promotions =[
 {
     id:3,
     inCart:0,
-    productImg:"./Info_img/combo_chicken_3_466x419.png",
+    productImg:"/about/Info_img/combo_chicken_3_466x419.png",
     productTitle: "Chicken Bucket Large",
     productOldPrice: 50,
     productPrice: 23,

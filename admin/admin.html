@@ -18,28 +18,28 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="/UIT_Team02_Web/food/style.css">
-    <link rel="stylesheet" href="/UIT_Team02_Web/about/about.css">
-    
-</head>
-<body>
-    <!-- header section starts  -->
-    <header id="bgColorHeader">
-      <a href="index.html" class="logo">
-          <img class="logoonggia" width="100px" src="images/logoOngGia.png">
+      <link rel="stylesheet" href="/food/style.css">
+    <link rel="stylesheet" href="/about/about.css">
+  </head>
+  
+  <body>
+     <header id="bgColorHeader">
+      <a href="/food/index.html" class="logo">
+          <img class="logoonggia" width="100px" src="/food/images/logoOngGia.png">
       </a>
 
       <div id="menu-bar" class="fas fa-bars fa-times"></div>
 
       <nav class="navbar">
-          <a href="/UIT_Team02_Web/food/index.html">Home</a>
-          <a href="/UIT_Team02_Web/food/detail.html">Detail</a>
-          <a href="/UIT_Team02_Web/about/about.html">About</a>
+          <a href="/food/index.html">Home</a>
+          <a href="/food/detail.html">Detail</a>
+          <a href="/about/about.html">About</a>
 
           <a class="admin-container" href="#default">Admin</a>
-          <a class="cart" href="/UIT_Team02_Web/food/cart.html">
+          <a class="cart" href="/food/cart.html">
               <i class="fa fa-shopping-cart" style="font-size:18px">
-                  <span class='badge badge-danger' id='lblCartCount'>0</span></i>
+                <span style="right:0%;top: -8%" class='badge badge-danger' id='lblCartCount'>0</span>
+              </i>
           </a>
       </nav>
       
@@ -76,7 +76,8 @@
 
     <div class="" id="productList"></div>
 
-    <section style=" top:auto ;border: none;background-color: rgb(223, 223, 61)" id="footer">
+
+    <section style=" top:auto ;border: none;" id="footer">
       <p id="footer_title">Old Man Restaurant</p>
       <article>
           <p>Ho Chi Minh branch</p>
@@ -93,7 +94,11 @@
       </article>
       <a href="#" id="pageup_btn">^</a>
   </section>
+
         <script src="adminPage.js"></script>
+        <script src="/food/cartPage.js"></script>
+
+
 
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 

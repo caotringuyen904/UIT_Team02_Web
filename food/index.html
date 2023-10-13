@@ -13,10 +13,12 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/UIT_Team02_Web/about/about.css">
+
+    <!-- <link rel="stylesheet" href="/about/about.css"> -->
 
 </head>
-<!-- TEAM 02 - WEB -->
+<!-- UIT - TEAM 02 - WEB  -->
+
 
 <body>
     <header id="bgColorHeader">
@@ -28,14 +30,15 @@
 
         <nav class="navbar">
             <a href="#home">Home</a>
-            <a href="detail.html">Detail</a>
-            <a href="/UIT_Team02_Web/about/about.html">About</a>
+
+            <a href="/food/detail.html">Detail</a>
+            <a href="/about/about.html">About</a>
 
             <a class="admin-container" href="../admin/admin.html">Admin</a>
 
-            <a class="cart" href="cart.html">
+            <a class="cart" href="/food/cart.html">
                 <i class="fa fa-shopping-cart" style="font-size:18px">
-                    <span class='badge badge-danger' id='lblCartCount'>0</span></i>
+                    <span style="right:0%;top: -8%" class='badge badge-danger' id='lblCartCount'>0</span></i>
             </a>
 
 
@@ -52,18 +55,19 @@
                 we believe will satisfy your taste.</p>
         </div>
         <div class="image">
-            <img src="images/home-img.png">
+
+            <img src="/food/images/home-img.png">
         </div>
     </section>
 
     <div class="wapper-buttonFilter">
         <div id="wrapper">
+
             <div id="search-container">
                 <input type="search" id="search-input" placeholder="search product name here..." />
                 <button id="search">Search</button>
             </div>
         </div>
-
 
         <div id="button" class="active">
             <button onclick="handleFilterProduct('ALL')" class="btn btn-danger ">ALL</button>
@@ -72,6 +76,7 @@
             <button onclick="handleFilterProduct('CAKE')" class="btn btn-danger">CAKE</button>
             <button onclick="handleFilterProduct('DESSERT')" class="btn btn-danger">DESSERT</button>
         </div>
+
     </div>
 
 
@@ -98,13 +103,9 @@
     </section>
 
 
-    <script src="index.js"></script>
-    <script src="detail.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script> -->
-
-
+    <script src="/food/index.js"></script>
+    <script src="/food/detail.js"></script>
+    
 
 </body>
 
